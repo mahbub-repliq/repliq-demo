@@ -10,16 +10,18 @@ import brands8 from '../../assets/images/brands/brands_8.jpg'
 function Partners() {
     return(
       <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
-            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 items-center gap-5 border p-3 md:p-5 lg:p-8">
-                <Image width={80} height={80} src={brands1} />
-                <Image width={80} height={80} src={brands2} />
-                <Image width={80} height={80} src={brands3} />
-                <Image width={80} height={80} src={brands4} />
-                <Image width={80} height={80} src={brands5} />
-                <Image width={80} height={80} src={brands6} />
-                <Image width={80} height={80} src={brands7} />
-                <Image width={80} height={80} src={brands8} />
+
+            <div className="flex flex-wrap justify-center items-center gap-5 md:gap-10 border p-2 md:p-4 lg:p-6">
+                <Image width={65} height={65} src={brands1} alt=''/>
+                <Image width={65} height={65} src={brands2} alt=''/>
+                <Image width={65} height={65} src={brands3} alt=''/>
+                <Image width={65} height={65} src={brands4} alt=''/>
+                <Image width={65} height={65} src={brands5} alt=''/>
+                <Image width={65} height={65} src={brands6} alt=''/>
+                <Image width={65} height={65} src={brands7} alt=''/>
+                <Image width={65} height={65} src={brands8} alt=''/>
             </div>
+            
       </div>
     )
 }

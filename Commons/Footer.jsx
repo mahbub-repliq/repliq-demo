@@ -1,4 +1,6 @@
 import {FaFacebookF, FaInstagram, FaTwitter, FaYoutube} from 'react-icons/fa'
+import ButtonSmall from '../Commons/ButtonSmall'
+import LargeButton from '../Commons/LargeButton'
 
 function Footer() {
     const year = new Date().getFullYear();
