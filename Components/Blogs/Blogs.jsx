@@ -17,9 +17,9 @@ function Blogs() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
         {blogs.map((item, index) => (
-          <div className="flex gap-1 rounded bg-base-100 shadow-lg border" key={index}>
+          <div className="group flex gap-1 rounded bg-base-100 shadow-lg border" key={index}>
             <div className="flex justify-center items-center">
-              <Image width={200} height={200} src={blogImage1} alt="" />
+              <Image className="transition ease-in-out  group-hover:-translate-y-1 group-hover:scale-105 duration-500" width={200} height={200} src={blogImage1} alt="" />
             </div>
 
             <div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`inter.className`}>
         <QueryClientProvider client={queryClient}>
           <Header />
-          {children}
+          <div className="pt-4 md:pt-20 lg:pt-28">{children}</div>
           <Footer />
         </QueryClientProvider>
       </body>

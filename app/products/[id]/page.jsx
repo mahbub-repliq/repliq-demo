@@ -1,9 +1,11 @@
 "use client";
 
 import LargeButton from "@/Commons/LargeButton";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 function SingleProduct({ params: { id } }) {
+  const [activeTab, setActiveTab] = useState("0");
   const { isLoading, error, data } = useQuery("repoData", () =>
     fetch("https://manufecture-website-server.onrender.com/products").then(
       (res) => res.json()
@@ -16,6 +18,10 @@ function SingleProduct({ params: { id } }) {
 
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
+      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold">
+        View Item
+      </h2>
+      <p className="text-neutral text-lg">Slug: home / products / {product?._id}</p>
       <div className="grid md:grid-cols-2 gap-5 items-center">
         <div className="flex justify-center items-center ">
           <img className="w-full" src={product?.image} alt="" />
@@ -44,7 +50,40 @@ function SingleProduct({ params: { id } }) {
         </div>
       </div>
       <div>
-        <h3 className="text-lg font-semibold">Details:</h3>
+        <ul className="hidden md:flex gap-4 text-sm md:text-lg mb-2">
+          <li
+            onClick={() => setActiveTab("0")}
+            className={`pb-2 border-b-2 ${
+              activeTab == 0 ? "border-primary" : "border-transparent"
+            } hover:border-primary cursor-pointer`}
+          >
+            Details
+          </li>
+          <li
+            onClick={() => setActiveTab("1")}
+            className={`pb-2 border-b-2 ${
+              activeTab == 1 ? "border-primary" : "border-transparent"
+            } hover:border-primary cursor-pointer`}
+          >
+            Comments
+          </li>
+          <li
+            onClick={() => setActiveTab("2")}
+            className={`pb-2 border-b-2 ${
+              activeTab == 2 ? "border-primary" : "border-transparent"
+            } hover:border-primary cursor-pointer`}
+          >
+            FAQ
+          </li>
+          <li
+            onClick={() => setActiveTab("3")}
+            className={`pb-2 border-b-2 ${
+              activeTab == 3 ? "border-primary" : "border-transparent"
+            } hover:border-primary cursor-pointer`}
+          >
+            Reviews
+          </li>
+        </ul>
         <ul>
           <li> {product?.spec[0].processor} </li>
           <li> {product?.spec[1].motherboard}</li>
