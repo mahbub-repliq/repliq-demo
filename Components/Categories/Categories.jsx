@@ -21,7 +21,7 @@ function Category() {
         <div className='basis-2/3 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
         {
             Categories.map((item, index) => 
-             <div className={`p-4 md:p-6 py-5 md:py-8 text-slate-800 ${(index === 0 && 'bg-slate-100') || (index === 2 && 'bg-slate-100') || (index === 4 && 'bg-slate-100')}`}>
+             <div key={index} className={`p-4 md:p-6 py-5 md:py-8 text-slate-800 ${(index === 0 && 'bg-slate-100') || (index === 2 && 'bg-slate-100') || (index === 4 && 'bg-slate-100')}`}>
                 <div className='flex justify-center items-center mb-3'> <BiHeadphone className='text-slate-800' size={60}  /></div>
                 <p className='text-center text-slate-800 font-semibold'> {item.name} </p>
              </div> 
