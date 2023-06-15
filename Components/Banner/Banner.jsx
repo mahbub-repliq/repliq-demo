@@ -9,7 +9,7 @@ function Banner() {
           NEW ERA OF <span className="mt-3 block">SMARTPHONES</span>
         </h3>
         <p className="text-lg md:text-xl lg:text-2xl text-rose-700 font-bold">
-          <span className="line-through text-slate-900">$530</span> $460
+          <span className="line-through text-neutral">$530</span> $460
         </p>
         <p className="text-slate-700 font-semibold">Apple Iphone 6s</p>
         <LargeButton>Shop Now</LargeButton>

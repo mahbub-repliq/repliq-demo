@@ -6,6 +6,7 @@ import {
 import { FaEnvelope } from "react-icons/fa";
 import { IoLogoUsd } from "react-icons/io";
 import { BsPersonCircle, BsChevronDown, BsSearch } from "react-icons/bs";
+import Link from "next/link";
 function Header() {
   return (
     <>
@@ -17,20 +18,20 @@ function Header() {
         <ul className="flex">
           <li className="px-2">English</li>
           <li className="px-2">USD</li>
-          <li className="px-2">Register</li>
-          <li className="px-2">SignIn</li>
+          <li className="px-2"> <Link href={'/register'} >Register</Link> </li>
+          <li className="px-2"><Link href={'/login'} >SignIn</Link></li>
         </ul>
       </div>
       <div>
         <div className="flex items-center gap-3 py-5 md:py-8 lg:py-12 bg-[#FFFFFF] text-slate-900 px-4 md:px-8 lg:px-12">
           <h1 className="basis-1/4 text-2xl md:text-3xl lg:text-4xl font-bold">
-            Brand
+          <Link href={'/'}>Brand</Link>
           </h1>
           <div>
             <ul className="flex items-center">
-              <li className="px-2 text-lg md:text-xl">Home</li>
-              <li className="px-2 text-lg md:text-xl">Products</li>
-              <li className="px-2 text-lg md:text-xl">About</li>
+              <li className="px-2 text-lg md:text-xl"> <Link href={'/'}>Home</Link> </li>
+              <li className="px-2 text-lg md:text-xl"><Link href={'/products'}>Products</Link> </li>
+              <li className="px-2 text-lg md:text-xl"> <Link href={'/blogs'}>Blogs</Link> </li>
               <li className="px-2 text-lg md:text-xl">Contacts</li>
             </ul>
           </div>
@@ -51,13 +52,13 @@ function Header() {
           </div>
           <div className="basis-1/4 flex justify-end items-center gap-3">
             <div className="relative ">
-              <AiOutlineHeart size={50} />
+              <AiOutlineHeart size={40} />
               <div className="bg-primary flex justify-center items-center w-7 h-7 rounded-full text-white text-center absolute top-[-10px] right-0">
                 <span>10</span>
               </div>
             </div>
             <div className="relative ">
-              <AiOutlineShoppingCart size={50} />
+              <AiOutlineShoppingCart size={40} />
               <div className="bg-primary flex justify-center items-center w-7 h-7 rounded-full text-white text-center absolute top-[-10px] right-0">
                 <span>10</span>
               </div>

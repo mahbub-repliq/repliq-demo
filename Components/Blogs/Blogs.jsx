@@ -5,14 +5,15 @@ import blogImage2 from "../../assets/images/blog_2.jpg";
 import blogImage3 from "../../assets/images/blog_3.jpg";
 import LargeButton from "@/Commons/LargeButton";
 import ButtonSmall from "@/Commons/ButtonSmall";
+import Link from "next/link";
 function Blogs() {
   return (
-    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
+    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <div className="flex justify-between items-center border-b pb-5">
         <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-slate-800">
           Latest News
         </h2>
-        <LargeButton>View All</LargeButton>
+        <LargeButton> <Link href={'/blogs'}>View All</Link> </LargeButton>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
         {blogs.map((item, index) => (
@@ -30,7 +31,7 @@ function Blogs() {
               </p>
               <p className="text-slate-800"> {item.text} </p>
               <ButtonSmall>
-                View details <BiChevronsRight className="inline" size={25} />
+                <Link href={`/blogs/${index + 1}`}>View details <BiChevronsRight className="inline" size={25} /></Link>
               </ButtonSmall>
             </div>
           </div>
