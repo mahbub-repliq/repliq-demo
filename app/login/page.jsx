@@ -104,7 +104,7 @@ export default function Login() {
           <AiFillGithub className="inline" /> Sign Up with GitHub{" "}
         </div>
         <p className="pt-3">
-          Already have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link className="text-primary underline" href="/register">
             Create an account
           </Link>

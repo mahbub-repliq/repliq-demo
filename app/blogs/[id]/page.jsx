@@ -14,7 +14,7 @@ function SingleBlog({ params: { id } }) {
   console.log(data);
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
-            <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold">
+      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold">
         View Blog
       </h2>
       <p className="text-neutral text-lg">Slug: home / blogs / {id}</p>

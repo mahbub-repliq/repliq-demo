@@ -44,17 +44,17 @@ export default function Register() {
   });
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="bg-accent rounded-md shadow-lg p-4 md:p-6 lg:p-8 min-h-full">
+    <div className="flex justify-center items-center overflow-x-hidden">
+      <div className="bg-accent rounded-md shadow-lg p-4 md:p-6 lg:p-8">
         <h2 className="text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-3">
           Create your account.
         </h2>
         <form onSubmit={formik.handleSubmit}>
-          <div className="flex gap-5 py-2">
+          <div className="md:flex gap-3 py-2">
             <div>
               <label htmlFor="">First Name</label>
               <input
-                className={`block border rounded p-2 focus:outline-none ${formik.errors.firstName ? 'border-secondary' : ''}`}
+                className={`block border rounded p-2 w-full focus:outline-none ${formik.errors.firstName ? 'border-secondary' : ''}`}
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -68,7 +68,7 @@ export default function Register() {
             <div>
               <label htmlFor="">Last Name</label>
               <input
-                className={`block border rounded p-2 focus:outline-none ${formik.errors.lastName ? 'border-secondary' : ''}`}
+                className={`block border rounded p-2 w-full focus:outline-none ${formik.errors.lastName ? 'border-secondary' : ''}`}
                 id="lastName"
                 name="lastName"
                 type="text"

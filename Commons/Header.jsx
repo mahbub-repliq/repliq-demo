@@ -19,12 +19,8 @@ import {
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 
 function Header() {
-  const [openCart, setOpenCart] = useState(false);
-  const [openMenu, setOpenMenu] = useState(false);
 
-  const handleClick = (event) => {
-    setOpenCart(event.currentTarget);
-  };
+  const [openMenu, setOpenMenu] = useState(false);
 
   const menuItems = [
     {
@@ -46,6 +42,10 @@ function Header() {
     {
       item: "about",
       path: "/about",
+    },
+    {
+      item: "dashboard",
+      path: "/dashboard",
     },
   ];
   return (
@@ -79,7 +79,7 @@ function Header() {
             </p>
             <Link
               className="md:font-semibold hover:text-primary mr-2 flex items-center"
-              href="/signin"
+              href="/login"
             >
               {" "}
               <FiLogIn className="mr-1 text-secondary" />
@@ -101,7 +101,7 @@ function Header() {
           </div>
           <div className="basis-2/4 lg:flex justify-between bg-base-100 rounded-full py-1 px-3 hidden">
             <div className="">
-              <select className="focus:outline-none" name="" id="">
+              <select className="focus:outline-none border p-2" name="" id="">
                 <option value="All Category" selected>
                   All Category
                 </option>
@@ -109,7 +109,7 @@ function Header() {
                 <option value="Smartphone">Smartphones & Tablets</option>
                 <option value="Camera">Computer & Laptops</option>
                 <option value="Accessories">Gadgets</option>
-                <option value="Accessories">Videi Games</option>
+                <option value="Accessories">Video Games</option>
               </select>
             </div>
             <input className="w-full pl-2" type="search" name="" id="" />
@@ -159,7 +159,7 @@ function Header() {
               key={index}
               onClick={() => setOpenMenu(!openMenu)}
               href={`${menu.path}`}
-              className="block md:inline-block mx-5 text-lg font-semibold capitalize pb-2"
+              className="block md:inline-block mx-5 text-lg  capitalize pb-2"
             >
               {menu.item}
             </Link>
