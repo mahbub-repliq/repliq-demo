@@ -15,7 +15,7 @@ function Products() {
 
   console.log("Got all products.........", data);
   return (
-    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
+    <div className="pt-4 md:pt-20 lg:pt-28 pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold">All Products</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
         {data?.map((item, index) => (

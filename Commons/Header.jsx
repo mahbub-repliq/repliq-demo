@@ -19,7 +19,6 @@ import {
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 
 function Header() {
-
   const [openMenu, setOpenMenu] = useState(false);
 
   const menuItems = [
@@ -51,7 +50,7 @@ function Header() {
   return (
     <div>
       <div className=" z-50 relative">
-        <div className="text-base-100 bg-[#1E1F29] py-2 px-5 md:px-10 flex justify-between">
+        <div className="hidden text-base-100 bg-[#1E1F29] py-2 px-5 md:px-10 md:flex justify-between">
           <div className=" ">
             <ul className="md:flex">
               <li className="md:font-semibold hover:text-primary mr-2">
@@ -113,9 +112,7 @@ function Header() {
               </select>
             </div>
             <input className="w-full pl-2" type="search" name="" id="" />
-            <button
-              className="px-3 py-1 rounded-full text-base-100 bg-primary hover:bg-secondary transition-all ease-in-out duration-500"
-            >
+            <button className="px-3 py-1 rounded-full text-base-100 bg-primary hover:bg-secondary transition-all ease-in-out duration-500">
               Search
             </button>
           </div>
@@ -144,7 +141,7 @@ function Header() {
           </div>
         </div>
         <div
-          className={`w-64 md:w-full bg-base-100 py-4 shadow-md absolute transition-all duration-500 ease-in md:md:flex justify-center md:top-auto ${
+          className={`w-full bg-base-100 md:py-4 shadow-md absolute transition-all duration-500 ease-in md:md:flex justify-center right-0 md:top-auto ${
             openMenu ? "top-[0px]" : "top-[-300px]"
           }`}
         >
@@ -159,11 +156,18 @@ function Header() {
               key={index}
               onClick={() => setOpenMenu(!openMenu)}
               href={`${menu.path}`}
-              className="block md:inline-block mx-5 text-lg  capitalize pb-2"
+              className="block md:inline-block mx-5 text-lg capitalize pb-2"
             >
               {menu.item}
             </Link>
           ))}
+          <Link
+            onClick={() => setOpenMenu(!openMenu)}
+            href={`/login`}
+            className="block md:hidden mx-5 text-lg capitalize pb-2"
+          >
+            Sign In
+          </Link>
         </div>
       </div>
     </div>

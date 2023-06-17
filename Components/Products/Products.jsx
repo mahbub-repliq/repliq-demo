@@ -22,8 +22,8 @@ function Products() {
   console.log("Got all products.........", data);
 
   return (
-    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
-      <div className="md:flex justify-between gap-3 border-b">
+    <div className="pt-4 md:pt-8 lg:pt-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
+      <div className="md:flex justify-between gap-3">
         <div className="flex flex-col justify-between">
           <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-slate-800">
             Featured Products
@@ -31,7 +31,7 @@ function Products() {
           <ul className="hidden md:flex gap-4 text-sm md:text-lg">
             <li
               onClick={() => setActiveTab("0")}
-              className={`pb-5 border-b-2 ${
+              className={`pb-4 border-b-2 ${
                 activeTab == 0 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
@@ -39,7 +39,7 @@ function Products() {
             </li>
             <li
               onClick={() => setActiveTab("1")}
-              className={`pb-5 border-b-2 ${
+              className={`pb-4 border-b-2 ${
                 activeTab == 1 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
@@ -47,7 +47,7 @@ function Products() {
             </li>
             <li
               onClick={() => setActiveTab("2")}
-              className={`pb-5 border-b-2 ${
+              className={`pb-4 border-b-2 ${
                 activeTab == 2 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
@@ -55,7 +55,7 @@ function Products() {
             </li>
             <li
               onClick={() => setActiveTab("3")}
-              className={`pb-5 border-b-2 ${
+              className={`pb-4 border-b-2 ${
                 activeTab == 3 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
@@ -63,7 +63,7 @@ function Products() {
             </li>
             <li
               onClick={() => setActiveTab("4")}
-              className={`pb-5 border-b-2 ${
+              className={`pb-4 border-b-2 ${
                 activeTab == 4 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
@@ -71,8 +71,10 @@ function Products() {
             </li>
           </ul>
         </div>
-        <div className="pb-5">
-          <LargeButton>View All</LargeButton>
+        <div className="">
+          <div className="mt-4 md:mt-0">
+            <LargeButton>View All</LargeButton>
+          </div>
           <div className="hidden md:flex justify-start items-center mt-5">
             <div className=" col-span-1 flex justify-center items-center w-10 h-10 rounded-full bg-accent shadow-lg cursor-pointer">
               {" "}
@@ -93,11 +95,11 @@ function Products() {
         </div>
       </div>
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
           {data?.slice(0, 4).map((item, index) => (
             <div
               key={index}
-              className="bg-transparent group rounded-lg shadow-lg p-3 md:p-4 lg:p-5 relative"
+              className="bg-transparent group rounded-lg border p-3 md:p-4 lg:p-5 relative"
             >
               <div className="flex justify-center items-center">
                 <img
