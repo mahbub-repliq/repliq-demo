@@ -4,7 +4,12 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "../Commons/Shared/Header";
 import Footer from "../Commons/Shared/Footer";
-import { QueryClient, QueryClientProvider } from "react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+import ClientOnly from "@/Components/ClientOnly";
 
 const queryClient = new QueryClient();
 
@@ -19,11 +24,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`inter.className`}>
-        <QueryClientProvider client={queryClient}>
-          <Header />
-          <div className="pt-4 md:pt-20">{children}</div>
-          <Footer />
-        </QueryClientProvider>
+        <ClientOnly>
+          <QueryClientProvider client={queryClient}>
+            <Header />
+            <div className="pt-4 md:pt-20">{children}</div>
+            <Footer />
+          </QueryClientProvider>
+        </ClientOnly>
       </body>
     </html>
   );

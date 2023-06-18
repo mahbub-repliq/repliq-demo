@@ -2,26 +2,19 @@
 
 import LargeButton from "@/Commons/LargeButton";
 import { useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from '@tanstack/react-query';
 import { RxDotFilled } from "react-icons/rx";
+import useDataFetch from "@/libs/useDataFetch";
+import PageTitle from "@/Commons/PageTitle";
 
 function SingleProduct({ params: { id } }) {
   const [activeTab, setActiveTab] = useState("0");
-  const { isLoading, error, data } = useQuery("repoData", () =>
-    fetch("https://manufecture-website-server.onrender.com/products").then(
-      (res) => res.json()
-    )
-  );
-
-  const product = data?.find((item) => item._id == id);
-
-  console.log("Got single item......", product);
+  const [productsQueries] = useDataFetch()
+  const product = productsQueries?.data?.find((item) => item._id == id);
 
   return (
-    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
-      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-5">
-        View Item
-      </h2>
+    <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
+      <PageTitle>View Item</PageTitle>
       <p className="text-neutral text-lg">
         Slug: home / products / {product?._id}
       </p>

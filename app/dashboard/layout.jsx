@@ -1,16 +1,17 @@
 "use client";
 
-import DashHeader from '@/Commons/Shared/DashHeader'
-import DashFooter from '@/Commons/Shared/DashFooter'
+import DashHeader from "@/Commons/Shared/DashHeader";
+import DashFooter from "@/Commons/Shared/DashFooter";
+import ClientOnly from "@/Components/ClientOnly";
 
 export default function Layout({ children }) {
   return (
-    <html lang="en">
-      <body className={`inter.className bg-base-100`}>
-        <DashHeader />
-        <div className="p-4 md:p-8 lg:p-12">{children}</div>
-        <DashFooter />
+      <body className={` bg-base-100`}>
+        {/* <ClientOnly> */}
+          <DashHeader />
+          <div className="p-4 md:p-8 lg:p-12">{children}</div>
+          <DashFooter />
+        {/* </ClientOnly> */}
       </body>
-    </html>
   );
 }

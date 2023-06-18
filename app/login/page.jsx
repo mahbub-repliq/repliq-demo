@@ -8,6 +8,7 @@ import { AiFillGithub, AiOutlineLine } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import PageTitle from "@/Commons/PageTitle";
 
 export default function Login() {
     const [showPass, setShowPass] = useState(false);
@@ -36,10 +37,8 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="bg-accent rounded-md shadow-lg p-4 md:p-6 lg:p-8 min-h-full">
-        <h2 className="text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-3">
-          Login your account.
-        </h2>
+      <div className="bg-accent rounded-md shadow p-4 md:p-6 lg:p-8">
+        <PageTitle>Login your account.</PageTitle>
         <form onSubmit={formik.handleSubmit}>
         <div className="py-2">
           <label htmlFor="">Email</label>

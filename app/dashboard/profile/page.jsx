@@ -24,27 +24,27 @@ function Profile() {
         </div>
         <div className="flex justify-center items-center">
           <ul className="w-[40rem]">
-            <li className="flex items-center gap-4 py-2">
-              <div className="w-16 h-16 bg-accent flex justify-center items-center rounded-full">
-                <BsFillPersonFill className="inline" size={30} />
+            <li className="flex items-center gap-4 pb-2">
+              <div className="w-12 h-12 bg-accent flex justify-center items-center rounded-full">
+                <BsFillPersonFill className="inline" size={25} />
               </div>
               <p>Mahbub Noyon</p>
             </li>
-            <li className="flex items-center gap-4 py-2">
-              <div className="w-16 h-16 bg-accent flex justify-center items-center rounded-full">
-                <HiIdentification className="inline" size={30} />
+            <li className="flex items-center gap-4 pb-2">
+              <div className="w-12 h-12 bg-accent flex justify-center items-center rounded-full">
+                <HiIdentification className="inline" size={25} />
               </div>
               <p>Software Developer</p>
             </li>
-            <li className="flex items-center gap-4 py-2">
-              <div className="w-16 h-16 bg-accent flex justify-center items-center rounded-full">
-                <BsFillEnvelopeFill className="inline" size={30} />
+            <li className="flex items-center gap-4 pb-2">
+              <div className="w-12 h-12 bg-accent flex justify-center items-center rounded-full">
+                <BsFillEnvelopeFill className="inline" size={25} />
               </div>
               <p>mahbubul.alam@repliq.dev</p>
             </li>
-            <li className="flex items-center gap-4 py-2">
-              <div className="w-16 h-16 bg-accent flex justify-center items-center rounded-full">
-                <AiFillPhone className="inline" size={30} />
+            <li className="flex items-center gap-4 pb-2">
+              <div className="w-12 h-12 bg-accent flex justify-center items-center rounded-full">
+                <AiFillPhone className="inline" size={25} />
               </div>
               <p>01687874697</p>
             </li>

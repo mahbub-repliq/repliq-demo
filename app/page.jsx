@@ -1,9 +1,9 @@
-import Banner from '../Components/Banner/Banner'
-import Services from '../Components/Services/Services'
-import Categories from '../Components/Categories/Categories'
-import Products from '../Components/Products/Products'
-import Blogs from '../Components/Blogs/Blogs'
-import Partners from '../Components/Partners/Partners'
+import Banner from '../Components/HomeComponents/Banner'
+import Services from '../Components/HomeComponents/Services'
+import Categories from '../Components/HomeComponents/Categories'
+import Products from '../Components/HomeComponents/Products'
+import Blogs from '../Components/HomeComponents/Blogs'
+import Partners from '../Components/HomeComponents/Partners'
 export default function Home() {
   return (
     <main className="">

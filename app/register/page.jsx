@@ -8,6 +8,7 @@ import { useState } from "react";
 import { AiFillGithub, AiOutlineLine } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import PageTitle from "@/Commons/PageTitle";
 
 export default function Register() {
   const [showPass, setShowPass] = useState(false);
@@ -45,10 +46,8 @@ export default function Register() {
 
   return (
     <div className="flex justify-center items-center overflow-x-hidden">
-      <div className="bg-accent rounded-md shadow-lg p-4 md:p-6 lg:p-8">
-        <h2 className="text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-3">
-          Create your account.
-        </h2>
+      <div className="bg-accent rounded-md shadow p-4 md:p-6 lg:p-8">
+        <PageTitle>Create your account.</PageTitle>
         <form onSubmit={formik.handleSubmit}>
           <div className="md:flex gap-3 py-2">
             <div>

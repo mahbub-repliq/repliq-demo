@@ -10,7 +10,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 function Blogs() {
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
-      <div className="flex justify-between items-center border-b pb-5">
+      <div className="flex justify-between items-center">
         <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-slate-800">
           Latest News
         </h2>
