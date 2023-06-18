@@ -4,30 +4,23 @@ import ButtonSmall from "@/Commons/ButtonSmall";
 import Image from "next/image";
 import React from "react";
 import { BiChevronsRight } from "react-icons/bi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import blogImage1 from "@/assets/images/blog_1.jpg";
 import Link from "next/link";
 import Loader from "@/Commons/Loader";
+import useDataFetch from "@/libs/useDataFetch";
+import PageTitle from "@/Commons/PageTitle";
 
 function Blogs() {
-  const { isLoading, error, data } = useQuery("repoData", () =>
-    fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
-      res.json()
-    )
-  );
-
-  console.log("Found blog items................", data);
-
+  const [productsQueries, postsQueries] = useDataFetch();
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
-      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold">
-        All Blogs
-      </h2>
-      {isLoading ? (
+      <PageTitle>All Blogs</PageTitle>
+      {postsQueries.isLoading ? (
         <Loader />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
-          {data?.slice(0, 8).map((item, index) => (
+          {postsQueries?.data?.slice(0, 8).map((item, index) => (
             <div
               className="group flex rounded bg-base-100 border py-4"
               key={index}

@@ -47,35 +47,35 @@ function Header() {
         <div className="hidden text-base-100 bg-[#1E1F29] py-2 px-5 md:px-10 md:flex justify-between">
           <div className=" ">
             <ul className="md:flex">
-              <li className="md:font-semibold  mr-2">
+              <li className=" mr-2">
                 <a className="flex items-center" href="">
-                  <FaPhoneAlt className="mr-1 text-secondary" /> +021-95-51-84
+                  <FaPhoneAlt className="mr-1 text-primary" /> +021-95-51-84
                 </a>
               </li>
-              <li className="md:font-semibold  mr-2">
+              <li className=" mr-2">
                 <a className="flex items-center" href="">
-                  <FaEnvelope className="mr-1 text-secondary" /> email@email.com
+                  <FaEnvelope className="mr-1 text-primary" /> email@email.com
                 </a>
               </li>
-              <li className="md:font-semibold  mr-2">
+              <li className=" mr-2">
                 <a className="flex items-center" href="">
-                  <MdLocationOn className="mr-1 text-secondary" /> 1734
+                  <MdLocationOn className="mr-1 text-primary" /> 1734
                   Stonecoal Road
                 </a>
               </li>
             </ul>
           </div>
           <div className="md:flex">
-            <p className="md:font-semibold  mr-2 flex items-center">
-              <IoLogoUsd className="text-secondary" />
+            <p className=" mr-2 flex items-center">
+              <IoLogoUsd className="text-primary" />
               BDT
             </p>
             <Link
-              className="md:font-semibold  mr-2 flex items-center"
+              className=" mr-2 flex items-center"
               href="/login"
             >
               {" "}
-              <FiLogIn className="mr-1 text-secondary" />
+              <FiLogIn className="mr-1 text-primary" />
               Sign In
             </Link>
           </div>
@@ -94,7 +94,7 @@ function Header() {
           </div>
           <div className="basis-3/5 flex justify-between items-center gap-4">
             <div
-              className={`w-full bg-base-100 md:bg-transparent md:text-base-100 shadow-md absolute transition-all duration-500 ease-in md:flex justify-center z-50 right-0 md:top-auto ${
+              className={`w-full bg-base-100 md:bg-transparent md:text-base-100 absolute transition-all duration-500 ease-in md:flex justify-center z-50 right-0 md:top-auto ${
                 openMenu ? "top-[0px]" : "top-[-300px]"
               }`}
             >
@@ -109,7 +109,7 @@ function Header() {
                   key={index}
                   onClick={() => setOpenMenu(!openMenu)}
                   href={`${menu.path}`}
-                  className="block md:inline-block mx-5 text-lg capitalize pb-2"
+                  className="block md:inline-block mx-5 text-lg capitalize"
                 >
                   {menu.item}
                 </Link>

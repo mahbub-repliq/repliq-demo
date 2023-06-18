@@ -6,27 +6,22 @@ import PageTitle from "@/Commons/PageTitle";
 import Modal from "@/Commons/Modal";
 import { useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import AddProduct from "./AddProduct";
 import { MdOutlineClose } from "react-icons/md";
 import Loader from "@/Commons/Loader";
+import useDataFetch from '@/libs/useDataFetch'
 
 function Products() {
   const [modalOpen, setModalOpen] = useState(false);
   const [openDrawer, setOpendrawer] = useState(false);
-  const { isLoading, error, data } = useQuery("products", () =>
-    fetch("https://manufecture-website-server.onrender.com/products").then(
-      (res) => res.json()
-    )
-  );
-
-  console.log(data);
+  const [productsQueries, postsQueries] = useDataFetch();
 
   return (
     <div>
       <div className="relative">
         <PageTitle>Products</PageTitle>
-        {isLoading ? (
+        {productsQueries?.isLoading ? (
           <Loader />
         ) : (
           <>
@@ -46,7 +41,7 @@ function Products() {
                 </tr>
               </thead>
               <tbody>
-                {data?.map((item, index) => (
+                {productsQueries?.data?.map((item, index) => (
                   <tr key={index} className="border border-neutral">
                     <td className="hidden md:block px-2 py-2">{index + 1}</td>
                     <td className="border border-neutral px-2 py-2">

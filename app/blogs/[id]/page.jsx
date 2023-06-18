@@ -1,22 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useQuery } from "react-query";
+import { useQuery } from '@tanstack/react-query';
 import blogImage1 from "@/assets/images/blog_1.jpg";
+import PageTitle from "@/Commons/PageTitle";
 
 function SingleBlog({ params: { id } }) {
-  const { isLoading, error, data } = useQuery("singleblog", () =>
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then((res) =>
-      res.json()
-    )
-  );
+  const {isLoading, error, data} = useQuery({
+    queryKey: ['singleBlog'],
+    queryFn: async () => await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then((res) => res.json())
+  })
 
-  console.log(data);
   return (
-    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
-      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-5">
-        View Blog
-      </h2>
+    <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
+      <PageTitle>View Blog</PageTitle>
       <p className="text-neutral text-lg">Slug: home / blogs / {id}</p>
       <div className="mt-5">
         <div className="">

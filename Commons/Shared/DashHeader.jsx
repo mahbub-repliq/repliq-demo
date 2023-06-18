@@ -85,13 +85,6 @@ function DashHeader() {
                 </li>
               </Link>
             </ul>
-            <div className="pl-8 py-5 border-t">
-              <LargeButton>
-                <Link href={"/"} onClick={() => setExpandMenu(!expandMenu)}>
-                  Logout
-                </Link>
-              </LargeButton>
-            </div>
           </div>
         </div>
       </div>
