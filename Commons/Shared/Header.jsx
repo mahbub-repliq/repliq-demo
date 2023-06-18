@@ -2,6 +2,7 @@ import {
   AiFillPhone,
   AiOutlineShoppingCart,
   AiOutlineHeart,
+  AiOutlineSearch,
 } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import { IoLogoUsd } from "react-icons/io";
@@ -17,6 +18,7 @@ import {
   MdOutlineDashboard,
 } from "react-icons/md";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
+import ButtonSmall from "../ButtonSmall";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(true);
@@ -35,14 +37,6 @@ function Header() {
       path: "/blogs",
     },
     {
-      item: "contact",
-      path: "/contact",
-    },
-    {
-      item: "about",
-      path: "/about",
-    },
-    {
       item: "dashboard",
       path: "/dashboard",
     },
@@ -53,17 +47,17 @@ function Header() {
         <div className="hidden text-base-100 bg-[#1E1F29] py-2 px-5 md:px-10 md:flex justify-between">
           <div className=" ">
             <ul className="md:flex">
-              <li className="md:font-semibold hover:text-primary mr-2">
+              <li className="md:font-semibold  mr-2">
                 <a className="flex items-center" href="">
                   <FaPhoneAlt className="mr-1 text-secondary" /> +021-95-51-84
                 </a>
               </li>
-              <li className="md:font-semibold hover:text-primary mr-2">
+              <li className="md:font-semibold  mr-2">
                 <a className="flex items-center" href="">
                   <FaEnvelope className="mr-1 text-secondary" /> email@email.com
                 </a>
               </li>
-              <li className="md:font-semibold hover:text-primary mr-2">
+              <li className="md:font-semibold  mr-2">
                 <a className="flex items-center" href="">
                   <MdLocationOn className="mr-1 text-secondary" /> 1734
                   Stonecoal Road
@@ -72,12 +66,12 @@ function Header() {
             </ul>
           </div>
           <div className="md:flex">
-            <p className="md:font-semibold hover:text-primary mr-2 flex items-center">
+            <p className="md:font-semibold  mr-2 flex items-center">
               <IoLogoUsd className="text-secondary" />
               BDT
             </p>
             <Link
-              className="md:font-semibold hover:text-primary mr-2 flex items-center"
+              className="md:font-semibold  mr-2 flex items-center"
               href="/login"
             >
               {" "}
@@ -87,7 +81,7 @@ function Header() {
           </div>
         </div>
         <div className="bg-[#15161D] py-3 px-5 md:px-10 md:flex flex-row justify-between items-center">
-          <div className="basis-1/4 flex justify-between lg:justify-start pb-5 lg:pb-0">
+          <div className="basis-1/5 flex justify-between lg:justify-start pb-5 lg:pb-0">
             <Link
               href="/"
               className="text-4xl md:text-6xl font-bold text-base-100"
@@ -98,28 +92,41 @@ function Header() {
               <MdMenu className="text-base-100" size={30} />
             </div>
           </div>
-          <div className="basis-2/4 lg:flex justify-between bg-base-100 rounded-full py-1 px-3 hidden">
-            <div className="">
-              <select className="focus:outline-none border p-2" name="" id="">
-                <option value="All Category" selected>
-                  All Category
-                </option>
-                <option value="Laptop">Accessories</option>
-                <option value="Smartphone">Smartphones & Tablets</option>
-                <option value="Camera">Computer & Laptops</option>
-                <option value="Accessories">Gadgets</option>
-                <option value="Accessories">Video Games</option>
-              </select>
+          <div className="basis-3/5 flex justify-between items-center gap-4">
+            <div
+              className={`w-full bg-base-100 md:bg-transparent md:text-base-100 shadow-md absolute transition-all duration-500 ease-in md:flex justify-center z-50 right-0 md:top-auto ${
+                openMenu ? "top-[0px]" : "top-[-300px]"
+              }`}
+            >
+              <div
+                onClick={() => setOpenMenu(!openMenu)}
+                className="flex justify-end md:hidden pr-3"
+              >
+                <MdClose size={30} />
+              </div>
+              {menuItems.map((menu, index) => (
+                <Link
+                  key={index}
+                  onClick={() => setOpenMenu(!openMenu)}
+                  href={`${menu.path}`}
+                  className="block md:inline-block mx-5 text-lg capitalize pb-2"
+                >
+                  {menu.item}
+                </Link>
+              ))}
+              <Link
+                onClick={() => setOpenMenu(!openMenu)}
+                href={`/login`}
+                className="block md:hidden mx-5 text-lg capitalize pb-2"
+              >
+                Sign In
+              </Link>
             </div>
-            <input className="w-full pl-2" type="search" name="" id="" />
-            <button className="px-3 py-1 rounded-full text-base-100 bg-primary hover:bg-secondary transition-all ease-in-out duration-500">
-              Search
-            </button>
           </div>
-          <div className="basis-1/4 flex justify-evenly text-base-100">
+          <div className="basis-1/5 flex justify-center md:justify-end gap-5 text-base-100">
             <div className="cursor-pointer relative">
               <div className="flex justify-center">
-                <FaRegHeart className="mx-auto text-secondary" size={30} />
+                <FaRegHeart className="mx-auto text-base-100" size={30} />
               </div>
               <p>Your Wishlist</p>
               <div className="bg-primary flex justify-center items-center w-6 h-6 rounded-full text-white text-center absolute top-[-10px] right-5">
@@ -129,7 +136,7 @@ function Header() {
             <div className="cursor-pointer relative">
               <div className="flex justify-center">
                 <AiOutlineShoppingCart
-                  className="mx-auto text-secondary"
+                  className="mx-auto text-base-100"
                   size={30}
                 />
               </div>
@@ -139,35 +146,6 @@ function Header() {
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className={`w-full bg-base-100 md:py-4 shadow-md absolute transition-all duration-500 ease-in md:md:flex justify-center right-0 md:top-auto ${
-            openMenu ? "top-[0px]" : "top-[-300px]"
-          }`}
-        >
-          <div
-            onClick={() => setOpenMenu(!openMenu)}
-            className="flex justify-end md:hidden pr-3"
-          >
-            <MdClose size={30} />
-          </div>
-          {menuItems.map((menu, index) => (
-            <Link
-              key={index}
-              onClick={() => setOpenMenu(!openMenu)}
-              href={`${menu.path}`}
-              className="block md:inline-block mx-5 text-lg capitalize pb-2"
-            >
-              {menu.item}
-            </Link>
-          ))}
-          <Link
-            onClick={() => setOpenMenu(!openMenu)}
-            href={`/login`}
-            className="block md:hidden mx-5 text-lg capitalize pb-2"
-          >
-            Sign In
-          </Link>
         </div>
       </div>
     </div>

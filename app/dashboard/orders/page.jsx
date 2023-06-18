@@ -12,8 +12,8 @@ function Orders() {
       <PageTitle>Orders</PageTitle>
       <table className="border-collapse border border-neutral w-full">
         <thead>
-          <tr className="">
-            <th className="hidden md:block border px-2 py-2">Number</th>
+          <tr className="border border-neutral">
+            <th className="hidden md:block px-2 py-2">Number</th>
             <th className="border border-neutral px-2 py-2">Product</th>
             <th className="border border-neutral px-2 py-2">Customer</th>
             <th className="border border-neutral px-2 py-2">Email</th>
@@ -22,8 +22,8 @@ function Orders() {
         </thead>
         <tbody>
           {orders?.map((item, index) => (
-            <tr key={index} className="">
-              <td className="hidden md:block border border-neutral px-2 py-2">
+            <tr key={index} className="border border-neutral">
+              <td className="hidden md:block px-2 py-2">
                 {index + 1}
               </td>
               <td className="border border-neutral px-2 py-2">

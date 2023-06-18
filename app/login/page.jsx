@@ -45,7 +45,7 @@ export default function Login() {
           <label htmlFor="">Email</label>
           <input
             className={`block border rounded w-full p-2 focus:outline-none ${
-              formik.errors.email ? "border-secondary" : ""
+              formik.errors.email ? "border-rose-500" : ""
             }`}
             id="email"
             name="email"
@@ -56,7 +56,7 @@ export default function Login() {
             placeholder="Your Email"
           />
           {formik.errors.email && (
-            <p className="text-xs pt-2 text-secondary">
+            <p className="text-xs pt-2 text-rose-500">
               {" "}
              Email is required.
             </p>
@@ -66,7 +66,7 @@ export default function Login() {
           <label htmlFor="">Password</label>
           <input
             className={`block border rounded w-full p-2 focus:outline-none ${
-              formik.errors.password ? "border-secondary" : ""
+              formik.errors.password ? "border-rose-500" : ""
             }`}
             type={showPass ? "text" : "password"}
             id="password"
@@ -76,7 +76,7 @@ export default function Login() {
             value={formik.values.password}
           />
           {formik.errors.password && (
-            <p className="text-xs pt-2 text-secondary">
+            <p className="text-xs pt-2 text-rose-500">
               {formik.errors.password}
             </p>
           )}

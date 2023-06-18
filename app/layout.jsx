@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`inter.className`}>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <div className="pt-4 md:pt-20 lg:pt-28">{children}</div>
+          <div className="pt-4 md:pt-20">{children}</div>
           <Footer />
         </QueryClientProvider>
       </body>

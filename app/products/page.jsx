@@ -6,8 +6,11 @@ import Link from "next/link";
 import ButtonSmall from "@/Commons/ButtonSmall";
 import { AiFillHeart } from "react-icons/ai";
 import Fetchedproducts from "@/Commons/Fetchedproducts";
+import useAPIs from '@/libs/dataFetch'
 
 function Products() {
+
+  console.log(useAPIs)
 
   return (
     <div className=" pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
