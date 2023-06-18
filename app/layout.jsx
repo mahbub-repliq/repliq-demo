@@ -2,8 +2,8 @@
 
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Header from "../Commons/Header";
-import Footer from "../Commons/Footer";
+import Header from "../Commons/Shared/Header";
+import Footer from "../Commons/Shared/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`inter.className`}>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <div className="">{children}</div>
+          <div className="pt-4 md:pt-20 lg:pt-28">{children}</div>
           <Footer />
         </QueryClientProvider>
       </body>

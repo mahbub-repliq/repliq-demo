@@ -19,9 +19,11 @@ module.exports = {
     extend: {
       colors: {
         transparent: 'transparent',
-        'primary': "#0E8CE4",
-        'secondary': "#DF3B3B",
+        'primary': "#088395",
+        'secondary': "#0A4D68",
         'accent': "#EFF6FA",
+        'accent2': "#05BFDB",
+        'accent3': "#00FFCA",
         'neutral': "#0f172a",
         'base-100': "#FFFFFF",
         'dark': "#000000",

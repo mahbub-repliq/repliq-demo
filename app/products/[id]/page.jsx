@@ -3,6 +3,7 @@
 import LargeButton from "@/Commons/LargeButton";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import { RxDotFilled } from "react-icons/rx";
 
 function SingleProduct({ params: { id } }) {
   const [activeTab, setActiveTab] = useState("0");
@@ -18,39 +19,39 @@ function SingleProduct({ params: { id } }) {
 
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-base-100">
-      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold">
+      <h2 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-5">
         View Item
       </h2>
-      <p className="text-neutral text-lg">Slug: home / products / {product?._id}</p>
-      <div className="grid md:grid-cols-2 gap-5 items-center">
-        <div className="flex justify-center items-center ">
+      <p className="text-neutral text-lg">
+        Slug: home / products / {product?._id}
+      </p>
+      <div className="md:grid md:grid-cols-5 items-center gap-5">
+        <div className=" col-span-2 flex justify-center items-center ">
           <img className="w-full" src={product?.image} alt="" />
         </div>
-        <div>
+        <div className="col-span-3">
           <h3 className="text-neutral text-lg md:text-xl lg:text-2xl font-semibold pb-3">
             {" "}
             {product?.model}{" "}
           </h3>
-          <div className="flex gap-5 pb-3">
+          <div className="pb-3">
             <p>
-              Price: <span className="text-secondary">{product?.price}</span>{" "}
+              Price: <span className="text-secondary font-semibold">{product?.price }</span> Tk.
             </p>
-            <p>Rating: {product?.rating} </p>
           </div>
           <h3 className="text-lg font-semibold pb-3">Feature:</h3>
-          <ul>
+          <ul className="list-disc pl-4">
             {product?.keyFeature.map((item, index) => (
-              <li key={index}>
-                {" "}
-                {index + 1} {item}{" "}
-              </li>
+              <li key={index}> {item} </li>
             ))}
           </ul>
-          <LargeButton>Checkout</LargeButton>
+          <div className="hidden my-5 md:block">
+            <LargeButton>Checkout</LargeButton>
+          </div>
         </div>
       </div>
       <div>
-        <ul className="hidden md:flex gap-4 text-sm md:text-lg mb-2">
+        <ul className="flex gap-4 text-lg font-semibold mb-2 mt-5">
           <li
             onClick={() => setActiveTab("0")}
             className={`pb-2 border-b-2 ${
@@ -84,8 +85,8 @@ function SingleProduct({ params: { id } }) {
             Reviews
           </li>
         </ul>
-        <ul>
-          <li> {product?.spec[0].processor} </li>
+        <ul className="list-disc pl-4">
+          <li>{product?.spec[0].processor} </li>
           <li> {product?.spec[1].motherboard}</li>
           <li> {product?.spec[2].ram}</li>
           <li> {product?.spec[3].graphics}</li>
@@ -94,6 +95,9 @@ function SingleProduct({ params: { id } }) {
           <li> {product?.spec[6].psu}</li>
         </ul>
       </div>
+      <div className="sticky bottom-4 my-5 md:hidden">
+            <LargeButton>Checkout</LargeButton>
+          </div>
     </div>
   );
 }

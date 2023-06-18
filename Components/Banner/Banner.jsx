@@ -1,9 +1,25 @@
+"use client"
+
+import { useState } from 'react';
 import Image from "next/image";
 import bannerImage from "@/assets/images/banner_product.png";
 import LargeButton from "@/Commons/LargeButton";
+import Modal from '../../Commons/Modal'
+
 function Banner() {
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <div className="pt-4 md:pt-20 lg:pt-28 flex justify-evenly items-center px-4 md:px-8 lg:px-12 bg-gradient-to-t from-[#CFE4EF] to-[#ffffff]">
+    <div className=" flex justify-evenly items-center px-4 md:px-8 lg:px-12 bg-gradient-to-t from-[#CFE4EF] to-[#ffffff]">
       <div className="">
         <h3 className="text-2xl md:text-3xl lg:text-4xl text-[#7599B2] pb-5 landing-loose font-bold">
           NEW ERA OF <span className="mt-1 md:mt-3 block">SMARTPHONES</span>
@@ -19,6 +35,17 @@ function Banner() {
       <div className="">
         <Image width="500" height="500" src={bannerImage} alt="" />
       </div>
+
+      {/* <div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => setModalOpen(true)}
+        >
+          Open Modal
+        </button>
+        <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
+        </Modal>
+      </div> */}
     </div>
   );
 }

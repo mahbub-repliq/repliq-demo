@@ -6,7 +6,7 @@ import chart4 from "../../assets/images/icons/char_4.png";
 
 function Services() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-5 pt-8 md:pt-16 lg:pt-24 pb-4 md:pb-8 lg:pb-16 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-8 md:pt-16 lg:pt-24 pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
       <div className="flex justify-center md:justify-start gap-5 rounded p-5 border">
         <Image width={40} height={40} src={chart1} alt="" />
         <div>

@@ -19,7 +19,7 @@ import {
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 
 function Header() {
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(true);
 
   const menuItems = [
     {

@@ -1,11 +1,10 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import ButtonSmall from "../Commons/ButtonSmall";
-import LargeButton from "../Commons/LargeButton";
+
 
 function Footer() {
   const year = new Date().getFullYear();
   return (
-    <div className="pt-5 md:pt-8 lg:pt-12 bg-[#FFFFFF] text-slate-900">
+    <div className="pt-4 md:pt-8 lg:pt-12 bg-[#FFFFFF] text-slate-900">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-5 px-4 md:px-8 lg:px-12 border-b pb-5 md:pb-8 lg:pb-12">
         <div className="flex justify-center text-center md:text-start">
           <div className="">
