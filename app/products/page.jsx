@@ -7,21 +7,23 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsFillStarFill } from "react-icons/bs";
 import Loader from "@/Commons/Loader";
 import useDataFetch from "@/libs/useDataFetch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageTitle from "@/Commons/PageTitle";
+import useMultipleDataFetch from '@/libs/useMultipleDataFetch'
 
 function Products() {
   const [wishlisted, setWishlisted] = useState(true);
-  const [productsQueries, postsQueries] = useDataFetch();
+  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch()
+
   return (
     <div className=" pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>All Products</PageTitle>
       <div>
-        {productsQueries?.isLoading ? (
+        {isloadingProducts ? (
           <Loader />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
-            {productsQueries?.data?.map((item, index) => (
+            {products?.map((item, index) => (
               <div
                 key={index}
                 className="bg-transparent group rounded-lg border p-3 md:p-4 lg:p-5 relative"

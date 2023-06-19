@@ -1,21 +1,41 @@
 "use client";
 
 import Image from "next/image";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import blogImage1 from "@/assets/images/blog_1.jpg";
 import PageTitle from "@/Commons/PageTitle";
+import { useRouter } from "next/navigation";
 
 function SingleBlog({ params: { id } }) {
-  const {isLoading, error, data} = useQuery({
-    queryKey: ['singleBlog'],
-    queryFn: async () => await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    .then((res) => res.json())
-  })
+  const router = useRouter();
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["singleBlog"],
+    queryFn: async () =>
+      await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(
+        (res) => res.json()
+      ),
+  });
 
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>View Blog</PageTitle>
-      <p className="text-neutral text-lg">Slug: home / blogs / {id}</p>
+      <p className="text-neutral text-lg">
+        Slug:{" "}
+        <button
+          className="border-0 underline text-secondary"
+          onClick={() => router.push("/")}
+        >
+          home
+        </button>{" "}
+        /{" "}
+        <button
+          className="border-0 underline text-secondary"
+          onClick={() => router.push("/blogs")}
+        >
+          products
+        </button>{" "}
+        / {id}
+      </p>
       <div className="mt-5">
         <div className="">
           <Image width={300} height={300} src={blogImage1} alt="" />

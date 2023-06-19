@@ -7,24 +7,38 @@ import { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
 
-function UpdateProfile({openProfile, setOpenProfile}) {
-    const formik = useFormik({
-        initialValues: {
-          name: "",
-          profession: "",
-          email: "",
-          phone: "",
-        },
-        validationSchema: Yup.object({
-          name: Yup.string(),
-          profession: Yup.string(),
-          email: Yup.string(),
-          phone: Yup.string(),
-        }),
-        onSubmit: (values) => {
-          console.log("Got register info..............", values);
-        },
-      });
+function UpdateProfile({ openProfile, setOpenProfile }) {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      profession: "",
+      email: "",
+      phone: "",
+      photo: null,
+      imagePreview: null,
+    },
+    validationSchema: Yup.object({
+      name: Yup.string(),
+      profession: Yup.string(),
+      email: Yup.string(),
+      phone: Yup.string(),
+      photo: Yup.mixed(),
+    }),
+    onSubmit: (values) => {
+      console.log("Got profile info..............", values);
+    },
+  });
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.currentTarget.files[0];
+    formik.setFieldValue("file", selectedFile);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imagePreviewUrl = e.target.result;
+      formik.setFieldValue("imagePreview", imagePreviewUrl);
+    };
+    reader.readAsDataURL(selectedFile);
+  };
 
   return (
     <div>
@@ -43,6 +57,23 @@ function UpdateProfile({openProfile, setOpenProfile}) {
         <div className="p-5">
           <PageTitle>Update Profile</PageTitle>
           <form onSubmit={formik.handleSubmit}>
+            <div className="pb-2">
+              <label htmlFor="">Upload your photo </label>
+              <input
+                className={`block rounded py-2 ${
+                  formik.errors.photo ? "border-rose-500" : ""
+                }`}
+                type="file"
+                name="photo"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+              {formik.errors.photo && (
+                <p className="text-xs pt-2 text-rose-500">
+                  {formik.errors.photo}
+                </p>
+              )}
+            </div>
             <div className="py-2">
               <label htmlFor="">Name</label>
               <input
@@ -134,6 +165,11 @@ function UpdateProfile({openProfile, setOpenProfile}) {
               />
             </LargeButton>
           </form>
+          {formik.values.imagePreview && (
+            <div className="w-48 h-48 mt-5">
+              <img src={formik.values.imagePreview} alt="Preview" />
+            </div>
+          )}
         </div>
       </div>
     </div>

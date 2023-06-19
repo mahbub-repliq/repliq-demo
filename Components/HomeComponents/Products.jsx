@@ -11,12 +11,12 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 import { BsFillStarFill } from "react-icons/bs";
 import Loader from "@/Commons/Loader";
-import useDataFetch from "@/libs/useDataFetch";
+import useMultipleDataFetch from "@/libs/useMultipleDataFetch";
 
 function Products() {
   const [activeTab, setActiveTab] = useState("0");
   const [wishlisted, setWishlisted] = useState(true);
-  const [productsQueries, postsQueries] = useDataFetch();
+  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch()
 
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
@@ -94,11 +94,11 @@ function Products() {
       </div>
 
       <div>
-        {productsQueries?.isLoading ? (
+        {isloadingProducts ? (
           <Loader />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
-            {productsQueries?.data?.slice(0, 4).map((item, index) => (
+            {products?.slice(0, 4).map((item, index) => (
               <div
                 key={index}
                 className="bg-transparent group rounded-lg border p-3 md:p-4 lg:p-5 relative"

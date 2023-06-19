@@ -59,8 +59,8 @@ function Header() {
               </li>
               <li className=" mr-2">
                 <a className="flex items-center" href="">
-                  <MdLocationOn className="mr-1 text-primary" /> 1734
-                  Stonecoal Road
+                  <MdLocationOn className="mr-1 text-primary" /> 1734 Stonecoal
+                  Road
                 </a>
               </li>
             </ul>
@@ -70,10 +70,7 @@ function Header() {
               <IoLogoUsd className="text-primary" />
               BDT
             </p>
-            <Link
-              className=" mr-2 flex items-center"
-              href="/login"
-            >
+            <Link className=" mr-2 flex items-center" href="/login">
               {" "}
               <FiLogIn className="mr-1 text-primary" />
               Sign In
@@ -94,15 +91,18 @@ function Header() {
           </div>
           <div className="basis-3/5 flex justify-between items-center gap-4">
             <div
-              className={`w-full bg-base-100 md:bg-transparent md:text-base-100 absolute transition-all duration-500 ease-in md:flex justify-center z-50 right-0 md:top-auto ${
+              className={`w-full bg-base-100 md:bg-transparent pb-2 md:pb-0 md:text-base-100 absolute transition-all duration-500 ease-in md:flex justify-center z-50 right-0 md:top-auto ${
                 openMenu ? "top-[0px]" : "top-[-300px]"
               }`}
             >
               <div
                 onClick={() => setOpenMenu(!openMenu)}
-                className="flex justify-end md:hidden pr-3"
+                className="flex justify-between md:hidden px-4 pt-3"
               >
-                <MdClose size={30} />
+                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral cursor-pointer">
+                  Electro
+                </h2>
+                <MdClose onClick={() => setOpenMenu(!openMenu)} size={30} />
               </div>
               {menuItems.map((menu, index) => (
                 <Link

@@ -20,12 +20,12 @@ const useDataFetch = () => {
       },
     ],
   });
-  console.log(
-    "Got all products.........",
-    productsQueries?.data,
-    "Got all posts.......",
-    postsQueries?.data
-  );
+  // console.log(
+  //   "Got all products.........",
+  //   productsQueries?.data,
+  //   "Got all posts.......",
+  //   postsQueries?.data
+  // );
   return [productsQueries, postsQueries];
 };
 

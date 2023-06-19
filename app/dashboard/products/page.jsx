@@ -4,24 +4,23 @@ import ButtonSmall from "@/Commons/ButtonSmall";
 import LargeButton from "@/Commons/LargeButton";
 import PageTitle from "@/Commons/PageTitle";
 import Modal from "@/Commons/Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiEditAlt } from "react-icons/bi";
-import { useQuery } from "@tanstack/react-query";
 import AddProduct from "./AddProduct";
 import { MdOutlineClose } from "react-icons/md";
 import Loader from "@/Commons/Loader";
-import useDataFetch from '@/libs/useDataFetch'
+import useMultipleDataFetch from '@/libs/useMultipleDataFetch'
 
 function Products() {
   const [modalOpen, setModalOpen] = useState(false);
   const [openDrawer, setOpendrawer] = useState(false);
-  const [productsQueries, postsQueries] = useDataFetch();
+  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch();
 
   return (
     <div>
       <div className="relative">
         <PageTitle>Products</PageTitle>
-        {productsQueries?.isLoading ? (
+        {isloadingProducts ? (
           <Loader />
         ) : (
           <>
@@ -41,7 +40,7 @@ function Products() {
                 </tr>
               </thead>
               <tbody>
-                {productsQueries?.data?.map((item, index) => (
+                {products.map((item, index) => (
                   <tr key={index} className="border border-neutral">
                     <td className="hidden md:block px-2 py-2">{index + 1}</td>
                     <td className="border border-neutral px-2 py-2">

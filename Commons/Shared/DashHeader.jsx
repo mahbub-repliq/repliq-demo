@@ -2,6 +2,7 @@
 
 import LargeButton from "@/Commons/LargeButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsPersonLinesFill, BsCart4, BsFillPersonFill } from "react-icons/bs";
@@ -9,18 +10,19 @@ import { FaChevronRight, FaList } from "react-icons/fa";
 import { MdOutlineClose, MdOutlineDashboard } from "react-icons/md";
 
 function DashHeader() {
+  const router = useRouter()
   const [expandMenu, setExpandMenu] = useState(true);
   return (
     <div>
       <div className="bg-base-100 relative">
-        <div className="hidden border-b py-3 px-4 md:px-8 lg:px-12 md:flex justify-between items-center">
+        <div className="border-b py-3 px-4 md:px-8 lg:px-12 flex justify-between items-center">
           <div className="flex items-center gap-5">
             <AiOutlineMenu
-              className="inline cursor-pointer"
+              className="hidden md:inline cursor-pointer"
               size={30}
               onClick={() => setExpandMenu(!expandMenu)}
             />
-            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral cursor-pointer" onClick={() => router.push("/")}>
               Electro
             </h2>
           </div>
@@ -37,7 +39,7 @@ function DashHeader() {
           } transition-all ease-in-out duration-500`}
         >
           <div className="flex justify-between border-b items-center md:px-6 lg:px-8 py-4">
-            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral" >
               Electro
             </h2>
             <MdOutlineClose

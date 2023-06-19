@@ -10,17 +10,18 @@ import Link from "next/link";
 import Loader from "@/Commons/Loader";
 import useDataFetch from "@/libs/useDataFetch";
 import PageTitle from "@/Commons/PageTitle";
+import useMultipleDataFetch from "@/libs/useMultipleDataFetch";
 
 function Blogs() {
-  const [productsQueries, postsQueries] = useDataFetch();
+  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch();
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>All Blogs</PageTitle>
-      {postsQueries.isLoading ? (
+      {isloadingPosts ? (
         <Loader />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
-          {postsQueries?.data?.slice(0, 8).map((item, index) => (
+          {posts?.slice(0, 8).map((item, index) => (
             <div
               className="group flex rounded bg-base-100 border py-4"
               key={index}

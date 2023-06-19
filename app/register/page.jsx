@@ -51,8 +51,6 @@ export default function Register() {
   const handleFileChange = (event) => {
     const selectedFile = event.currentTarget.files[0];
     formik.setFieldValue("file", selectedFile);
-
-    // Preview the selected file
     const reader = new FileReader();
     reader.onload = (e) => {
       const imagePreviewUrl = e.target.result;
@@ -61,7 +59,6 @@ export default function Register() {
     reader.readAsDataURL(selectedFile);
   };
 
-  console.log(formik.values.imagePreview);
 
   return (
     <div className="flex justify-center items-center overflow-x-hidden">
@@ -71,13 +68,19 @@ export default function Register() {
           <div className="pb-2">
             <label htmlFor="">Upload your photo </label>
             <input
-              className="block rounded py-2"
+              className={`block rounded py-2 ${
+                formik.errors.photo ? "border-rose-500" : ""
+              }`}
               type="file"
               name="photo"
               accept="image/*"
-              // onChange={formik.handleChange}
               onChange={handleFileChange}
             />
+            {formik.errors.photo && (
+                <p className="text-xs pt-2 text-rose-500">
+                  {formik.errors.photo}
+                </p>
+              )}
           </div>
           <div className="md:flex gap-3 py-2">
             <div>

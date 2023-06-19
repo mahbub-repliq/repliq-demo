@@ -1,25 +1,43 @@
 "use client";
 
 import LargeButton from "@/Commons/LargeButton";
-import { useState } from "react";
-import { useQuery } from '@tanstack/react-query';
-import { RxDotFilled } from "react-icons/rx";
-import useDataFetch from "@/libs/useDataFetch";
+import { useState, useEffect } from "react";
+import useMultipleDataFetch from "@/libs/useMultipleDataFetch";
 import PageTitle from "@/Commons/PageTitle";
+import { useRouter } from "next/navigation";
 
 function SingleProduct({ params: { id } }) {
   const [activeTab, setActiveTab] = useState("0");
-  const [productsQueries] = useDataFetch()
-  const product = productsQueries?.data?.find((item) => item._id == id);
+  const router = useRouter();
+  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch();
+  
+  const product = products?.find((item) => item._id == id);
+
+
+
 
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>View Item</PageTitle>
       <p className="text-neutral text-lg">
-        Slug: home / products / {product?._id}
+        Slug: {" "}
+        <button
+          className="border-0 underline text-secondary"
+          onClick={() => router.push("/")}
+        >
+          home
+        </button>{" "}
+        /{" "}
+        <button
+          className="border-0 underline text-secondary"
+          onClick={() => router.push("/products")}
+        >
+          products
+        </button>{" "}
+        / {product?._id}
       </p>
       <div className="md:grid md:grid-cols-5 items-center gap-5">
-        <div className=" col-span-2 flex justify-center items-center ">
+        <div className=" col-span-2 flex justify-center items-center my-5">
           <img className="w-full" src={product?.image} alt="" />
         </div>
         <div className="col-span-3">
@@ -29,7 +47,11 @@ function SingleProduct({ params: { id } }) {
           </h3>
           <div className="pb-3">
             <p>
-              Price: <span className="text-secondary font-semibold">{product?.price }</span> Tk.
+              Price:{" "}
+              <span className="text-secondary font-semibold">
+                {product?.price}
+              </span>{" "}
+              Tk.
             </p>
           </div>
           <h3 className="text-lg font-semibold pb-3">Feature:</h3>
@@ -89,8 +111,8 @@ function SingleProduct({ params: { id } }) {
         </ul>
       </div>
       <div className="sticky bottom-4 my-5 md:hidden">
-            <LargeButton>Checkout</LargeButton>
-          </div>
+        <LargeButton>Checkout</LargeButton>
+      </div>
     </div>
   );
 }

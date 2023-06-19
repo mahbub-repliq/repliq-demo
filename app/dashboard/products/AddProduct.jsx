@@ -25,7 +25,7 @@ function AddProduct({ openDrawer, setOpendrawer }) {
       rating: Yup.string().required("Please enter a rating"),
     }),
     onSubmit: (values) => {
-      console.log("Got register info..............", values);
+      console.log("Got product info..............", values);
     },
   });
   return (

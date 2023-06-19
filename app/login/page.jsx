@@ -31,7 +31,7 @@ export default function Login() {
       .matches(/[A-Z]/, getCharacterValidationError("uppercase")),
     }),
     onSubmit: (values) => {
-      console.log("Got register info..............", values);
+      console.log("Got login info..............", values);
     },
   });
 
