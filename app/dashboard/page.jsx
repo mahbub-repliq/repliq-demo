@@ -11,74 +11,35 @@ import { RxCross1 } from "react-icons/rx";
 
 function Dashboard() {
   const [expandMenu, setExpandMenu] = useState(true);
-  
+
   return (
     <div className=" bg-base-100 relative">
       <div className="">
         <h3 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-4 md:mb-8 lg:mb-12">
           Dashboard
         </h3>
-        <div className="grid grid-cols-2 gap-5">
-          <div className="md:flex gap-4 items-center bg-primary p-4 md:p-6 rounded-lg shadow-lg">
-            <div className="basis-1/2">
-              <h2 className="text-base-100 font-semibold text-center md:text-start">
-                Products
-              </h2>
-              <p className="text-base-100 text-center md:text-start">
-                Total products in stock
-              </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+          {cards.map((item, index) => (
+            <div
+              key={index}
+              className={`md:flex gap-4 items-center px-4 md:px-6 py-4 md:py-10 rounded-lg shadow`}
+            style={{background: `${item.background}`}}>
+              <div className="basis-1/2">
+                <h2 className="text-neutral font-semibold text-center md:text-start capitalize">
+                  {item.title}
+                </h2>
+                <p className="text-neutral text-center md:text-start">
+                  {item.subTitle}
+                </p>
+              </div>
+              <div className="basis-1/2 flex justify-center">
+                <h2 className="text-neutral font-semibold text-3xl md:text-4xl lg:text-5xl">
+                  {item.value}
+                </h2>
+              </div>
             </div>
-            <div className="basis-1/2 flex justify-center">
-              <h2 className="text-base-100 font-semibold text-3xl md:text-4xl lg:text-5xl">
-                500
-              </h2>
-            </div>
-          </div>
-          <div className="md:flex gap-4 items-center bg-emerald-500 p-4 md:p-6 rounded-lg shadow-lg">
-            <div className="basis-1/2">
-              <h2 className="text-base-100 font-semibold text-center md:text-start">
-                Orders
-              </h2>
-              <p className="text-base-100 text-center md:text-start">
-                Total pending orders
-              </p>
-            </div>
-            <div className="basis-1/2 flex justify-center">
-              <h2 className="text-base-100 font-semibold text-3xl md:text-4xl lg:text-5xl">
-                250
-              </h2>
-            </div>
-          </div>
-          <div className="md:flex gap-4 items-center bg-neutral p-4 md:p-6 rounded-lg shadow-lg">
-            <div className="basis-1/2">
-              <h2 className="text-base-100 font-semibold text-center md:text-start">
-                Customers
-              </h2>
-              <p className="text-base-100 text-center md:text-start">
-                Total customers
-              </p>
-            </div>
-            <div className="basis-1/2 flex justify-center">
-              <h2 className="text-base-100 font-semibold text-3xl md:text-4xl lg:text-5xl">
-                100
-              </h2>
-            </div>
-          </div>
-          <div className="md:flex gap-4 items-center bg-secondary p-4 md:p-6 rounded-lg shadow-lg">
-            <div className="basis-1/2">
-              <h2 className="text-base-100 font-semibold text-center md:text-start">
-                Rejected Orders
-              </h2>
-              <p className="text-base-100 text-center md:text-start">
-                Total rejected orders
-              </p>
-            </div>
-            <div className="basis-1/2 flex justify-center">
-              <h2 className="text-base-100 font-semibold text-3xl md:text-4xl lg:text-5xl">
-                50
-              </h2>
-            </div>
-          </div>
+          ))}
+
         </div>
       </div>
     </div>
@@ -86,3 +47,42 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+const cards = [
+  {
+    title: "products",
+    subTitle: "Total products in stock",
+    value: "500",
+    background: "#86efac",
+  },
+  {
+    title: "orders",
+    subTitle: "Total orders",
+    value: "400",
+    background: "#6ee7b7",
+  },
+  {
+    title: "customers",
+    subTitle: "Total customers",
+    value: "100",
+    background: "#5eead4",
+  },
+  {
+    title: "pending delivery",
+    subTitle: "Total pending orders",
+    value: "300",
+    background: "#67e8f9",
+  },
+  {
+    title: "products",
+    subTitle: "Total products in stock",
+    value: "500",
+    background: "#d8b4fe",
+  },
+  {
+    title: "rejected orders",
+    subTitle: "Total rejected orders",
+    value: "500",
+    background: "#fda4af",
+  },
+];

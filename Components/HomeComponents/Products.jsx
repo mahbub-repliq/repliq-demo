@@ -70,6 +70,7 @@ function Products() {
         </div>
         <div className="">
           <div className="">
+            <Link href={'/products'}></Link>
             <LargeButton>View All</LargeButton>
           </div>
           <div className="hidden md:flex justify-start items-center mt-5">

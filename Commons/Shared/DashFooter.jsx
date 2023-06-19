@@ -22,7 +22,7 @@ function DashFooter() {
           </Link>
         </div>
         <div>
-          <Link href={"/dashboard"}>
+          <Link href={"/dashboard/profile"}>
             <div className="hover:bg-accent rounded-lg py-3 flex flex-col justify-center items-center">
               <BsFillPersonFill className="" size={20} />
               <p className="font-semibold mt-2">Profile</p>
@@ -30,7 +30,7 @@ function DashFooter() {
           </Link>
         </div>
         <div>
-          <Link href={"/dashboard/customers"}>
+          <Link href={"/dashboard/products"}>
             <div className="hover:bg-accent rounded-lg py-3 flex flex-col justify-center items-center">
               <BsCart4 className="" size={20} />
               <p className="font-semibold mt-2">Products</p>
