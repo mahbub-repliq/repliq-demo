@@ -4,7 +4,7 @@ import {
   AiOutlineHeart,
   AiOutlineSearch,
 } from "react-icons/ai";
-import { FaEnvelope } from "react-icons/fa";
+import { FaClosedCaptioning, FaEnvelope } from "react-icons/fa";
 import { IoLogoUsd } from "react-icons/io";
 import { BsPersonCircle, BsChevronDown, BsSearch } from "react-icons/bs";
 import Link from "next/link";
@@ -21,7 +21,7 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import ButtonSmall from "../ButtonSmall";
 
 function Header() {
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(FaClosedCaptioning);
 
   const menuItems = [
     {
@@ -97,7 +97,7 @@ function Header() {
             >
               <div
                 onClick={() => setOpenMenu(!openMenu)}
-                className="flex justify-between md:hidden px-4 pt-3"
+                className="flex justify-between md:hidden mx-5 pt-3"
               >
                 <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral cursor-pointer">
                   Electro

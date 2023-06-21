@@ -6,14 +6,15 @@ import ButtonSmall from "@/Commons/ButtonSmall";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsFillStarFill } from "react-icons/bs";
 import Loader from "@/Commons/Loader";
-import useDataFetch from "@/libs/useDataFetch";
+import useDataFetch from "@/hooks/useDataFetch";
 import { useState, useEffect } from "react";
 import PageTitle from "@/Commons/PageTitle";
-import useMultipleDataFetch from '@/libs/useMultipleDataFetch'
+import useMultipleDataFetch from "@/hooks/useMultipleDataFetch";
 
 function Products() {
   const [wishlisted, setWishlisted] = useState(true);
-  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch()
+  const [products, posts, isloadingProducts, isloadingPosts] =
+    useMultipleDataFetch();
 
   return (
     <div className=" pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
@@ -26,22 +27,28 @@ function Products() {
             {products?.map((item, index) => (
               <div
                 key={index}
-                className="bg-transparent group rounded-lg border p-3 md:p-4 lg:p-5 relative"
+                className="bg-[#FEFDFF] group rounded-lg border p-3 md:p-4 lg:p-5 relative"
               >
                 <div className="flex justify-center items-center">
-                  <img
-                    className="w-48 transition ease-in-out  group-hover:-translate-y-1 group-hover:scale-110 duration-500"
-                    src={item.image}
-                    alt=""
-                  />
+                  <Link className="my-2 md:my-4" href={`/products/${item._id}`}>
+                    <img
+                      className="w-48 transition ease-in-out  group-hover:-translate-y-1 group-hover:scale-110 duration-500"
+                      src={item.image}
+                      alt=""
+                    />
+                  </Link>
                 </div>
-                {/* <p> {item.rating} </p> */}
-                <h3 className="text-md text-left mt-3">
+
+                <h3 className="hidden md:block text-md text-left mt-3">
                   {" "}
                   {item?.model?.slice(0, 30)}..{" "}
                 </h3>
-                <div className="flex items-end gap-3">
-                  <div>
+                <h3 className="md:hidden text-md text-left mt-3">
+                  {" "}
+                  {item?.model}{" "}
+                </h3>
+                <div className="flex justify-between items-end gap-3">
+                  <div className="">
                     <div>
                       <BsFillStarFill
                         className={`inline mr-1 text-yellow-400 `}
@@ -59,12 +66,12 @@ function Products() {
                         className={`inline mr-1 text-yellow-400 `}
                       />
                     </div>
-                    <h3 className="basis-1/2 md:text-lg lg:text-xl text-secondary text-left">
+                    <h3 className=" md:text-lg lg:text-xl text-secondary text-left">
                       {item.price}{" "}
                       <TbCurrencyTaka className="inline" size={20} />
                     </h3>
                   </div>
-                  <div className="basis-1/2">
+                  <div className="">
                     <ButtonSmall>
                       <Link
                         className="my-2 md:my-4"

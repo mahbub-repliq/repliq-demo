@@ -15,6 +15,8 @@ function AddProduct({ openDrawer, setOpendrawer }) {
       price: "",
       quantity: "",
       rating: "",
+      photo: null,
+      imagePreview: null,
     },
     validationSchema: Yup.object({
       productname: Yup.string()
@@ -23,11 +25,24 @@ function AddProduct({ openDrawer, setOpendrawer }) {
       price: Yup.string().required("Required"),
       quantity: Yup.string().required("Required"),
       rating: Yup.string().required("Please enter a rating"),
+      photo: Yup.mixed(),
     }),
     onSubmit: (values) => {
       console.log("Got product info..............", values);
     },
   });
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.currentTarget.files[0];
+    formik.setFieldValue("file", selectedFile);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imagePreviewUrl = e.target.result;
+      formik.setFieldValue("imagePreview", imagePreviewUrl);
+    };
+    reader.readAsDataURL(selectedFile);
+  };
+
   return (
     <div className="">
       <div
@@ -45,6 +60,18 @@ function AddProduct({ openDrawer, setOpendrawer }) {
         <div className="p-5">
             <PageTitle>Add new product</PageTitle>
           <form onSubmit={formik.handleSubmit}>
+          <div className="pb-2">
+              <label htmlFor="">Upload product photo </label>
+              <input
+                className={`block rounded py-2 ${
+                  formik.errors.photo ? "border-rose-500" : ""
+                }`}
+                type="file"
+                name="photo"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+            </div>
             <div className="py-2">
               <label htmlFor="">Product Name</label>
               <input
@@ -137,6 +164,11 @@ function AddProduct({ openDrawer, setOpendrawer }) {
               />
             </LargeButton>
           </form>
+          {formik.values.imagePreview && (
+            <div className="w-48 h-48 mt-5">
+              <img src={formik.values.imagePreview} alt="Preview" />
+            </div>
+          )}
         </div>
       </div>
     </div>

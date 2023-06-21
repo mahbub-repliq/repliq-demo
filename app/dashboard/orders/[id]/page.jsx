@@ -6,8 +6,8 @@ function SingleOrder({ params: { id } }) {
   return (
     <div className="bg-base-100">
       <PageTitle>Order Details</PageTitle>
-      <div className="">
-        <ul>
+      <div className="flex justify-center items-center">
+        <ul className="w-96">
           <li className="flex gap-4">
             <p className="basis-1/4 text-lg">Product</p>
             <p className="basis-3/4">: {order.product}</p>

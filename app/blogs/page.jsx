@@ -8,12 +8,13 @@ import { useQuery } from "@tanstack/react-query";
 import blogImage1 from "@/assets/images/blog_1.jpg";
 import Link from "next/link";
 import Loader from "@/Commons/Loader";
-import useDataFetch from "@/libs/useDataFetch";
+import useDataFetch from "@/hooks/useDataFetch";
 import PageTitle from "@/Commons/PageTitle";
-import useMultipleDataFetch from "@/libs/useMultipleDataFetch";
+import useMultipleDataFetch from "@/hooks/useMultipleDataFetch";
 
 function Blogs() {
-  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch();
+  const [products, posts, isloadingProducts, isloadingPosts] =
+    useMultipleDataFetch();
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>All Blogs</PageTitle>
@@ -44,14 +45,16 @@ function Blogs() {
                 </p>
                 <p className="text-slate-800">
                   {" "}
-                  {item?.body?.slice(0, 50)}...{" "}
+                  {item?.body?.slice(0, 60)}...{" "}
                 </p>
-                <ButtonSmall>
-                  <Link className="my-2 md:my-4" href={`/blogs/${index + 1}`}>
-                    View details{" "}
-                    <BiChevronsRight className="inline" size={25} />
-                  </Link>
-                </ButtonSmall>
+                <Link href={`/blogs/${item.id}`}>
+                  <div className="mt-2 md:mt-4">
+                    <ButtonSmall>
+                      View details{" "}
+                      <BiChevronsRight className="inline" size={25} />
+                    </ButtonSmall>
+                  </div>
+                </Link>
               </div>
             </div>
           ))}

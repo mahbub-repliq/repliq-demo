@@ -2,30 +2,30 @@
 
 import LargeButton from "@/Commons/LargeButton";
 import { useState, useEffect } from "react";
-import useMultipleDataFetch from "@/libs/useMultipleDataFetch";
+import useMultipleDataFetch from "@/hooks/useMultipleDataFetch";
 import PageTitle from "@/Commons/PageTitle";
 import { useRouter } from "next/navigation";
+import { FaHome } from "react-icons/fa";
 
 function SingleProduct({ params: { id } }) {
   const [activeTab, setActiveTab] = useState("0");
   const router = useRouter();
-  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch();
-  
+  const [products, posts, isloadingProducts, isloadingPosts] =
+    useMultipleDataFetch();
+
   const product = products?.find((item) => item._id == id);
-
-
-
 
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>View Item</PageTitle>
-      <p className="text-neutral text-lg">
-        Slug: {" "}
+      <div className="text-neutral text-lg border p-2">
         <button
           className="border-0 underline text-secondary"
           onClick={() => router.push("/")}
         >
-          home
+          <div className="flex justify-center items-center ">
+            <FaHome />
+          </div>
         </button>{" "}
         /{" "}
         <button
@@ -34,8 +34,8 @@ function SingleProduct({ params: { id } }) {
         >
           products
         </button>{" "}
-        / {product?._id}
-      </p>
+        / {product?.model}
+      </div>
       <div className="md:grid md:grid-cols-5 items-center gap-5">
         <div className=" col-span-2 flex justify-center items-center my-5">
           <img className="w-full" src={product?.image} alt="" />

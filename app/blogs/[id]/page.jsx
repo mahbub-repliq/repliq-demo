@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import blogImage1 from "@/assets/images/blog_1.jpg";
 import PageTitle from "@/Commons/PageTitle";
 import { useRouter } from "next/navigation";
+import {FaHome} from 'react-icons/fa'
 
 function SingleBlog({ params: { id } }) {
   const router = useRouter();
@@ -19,23 +20,24 @@ function SingleBlog({ params: { id } }) {
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
       <PageTitle>View Blog</PageTitle>
-      <p className="text-neutral text-lg">
-        Slug:{" "}
+      <div className="text-neutral text-lg border p-2">
         <button
           className="border-0 underline text-secondary"
           onClick={() => router.push("/")}
         >
-          home
+          <div className="flex justify-center items-center ">
+            <FaHome />
+          </div>
         </button>{" "}
         /{" "}
         <button
           className="border-0 underline text-secondary"
           onClick={() => router.push("/blogs")}
         >
-          products
+          blogs
         </button>{" "}
-        / {id}
-      </p>
+        / {data?.id}
+      </div>
       <div className="mt-5">
         <div className="">
           <Image width={300} height={300} src={blogImage1} alt="" />

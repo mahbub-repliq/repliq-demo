@@ -9,7 +9,7 @@ import { BiEditAlt } from "react-icons/bi";
 import AddProduct from "./AddProduct";
 import { MdOutlineClose } from "react-icons/md";
 import Loader from "@/Commons/Loader";
-import useMultipleDataFetch from '@/libs/useMultipleDataFetch'
+import useMultipleDataFetch from '@/hooks/useMultipleDataFetch'
 
 function Products() {
   const [modalOpen, setModalOpen] = useState(false);

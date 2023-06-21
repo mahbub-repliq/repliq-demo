@@ -68,11 +68,6 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
                 accept="image/*"
                 onChange={handleFileChange}
               />
-              {formik.errors.photo && (
-                <p className="text-xs pt-2 text-rose-500">
-                  {formik.errors.photo}
-                </p>
-              )}
             </div>
             <div className="py-2">
               <label htmlFor="">Name</label>

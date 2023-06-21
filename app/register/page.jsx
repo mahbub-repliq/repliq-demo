@@ -76,11 +76,6 @@ export default function Register() {
               accept="image/*"
               onChange={handleFileChange}
             />
-            {formik.errors.photo && (
-                <p className="text-xs pt-2 text-rose-500">
-                  {formik.errors.photo}
-                </p>
-              )}
           </div>
           <div className="md:flex gap-3 py-2">
             <div>

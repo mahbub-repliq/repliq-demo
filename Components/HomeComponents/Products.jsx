@@ -11,12 +11,13 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 import { BsFillStarFill } from "react-icons/bs";
 import Loader from "@/Commons/Loader";
-import useMultipleDataFetch from "@/libs/useMultipleDataFetch";
+import useMultipleDataFetch from "@/hooks/useMultipleDataFetch";
 
 function Products() {
   const [activeTab, setActiveTab] = useState("0");
   const [wishlisted, setWishlisted] = useState(true);
-  const [products, posts, isloadingProducts, isloadingPosts] = useMultipleDataFetch()
+  const [products, posts, isloadingProducts, isloadingPosts] =
+    useMultipleDataFetch();
 
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
@@ -70,8 +71,9 @@ function Products() {
         </div>
         <div className="">
           <div className="">
-            <Link href={'/products'}></Link>
-            <LargeButton>View All</LargeButton>
+            <LargeButton>
+              <Link href={"/products"}>View All</Link>
+            </LargeButton>
           </div>
           <div className="hidden md:flex justify-start items-center mt-5">
             <div className=" col-span-1 flex justify-center items-center w-10 h-10 rounded-full bg-accent shadow-lg cursor-pointer">
@@ -101,22 +103,28 @@ function Products() {
             {products?.slice(0, 4).map((item, index) => (
               <div
                 key={index}
-                className="bg-transparent group rounded-lg border p-3 md:p-4 lg:p-5 relative"
+                className="bg-[#FEFDFF] group rounded-lg border p-3 md:p-4 lg:p-5 relative"
               >
                 <div className="flex justify-center items-center">
-                  <img
-                    className="w-48 transition ease-in-out  group-hover:-translate-y-1 group-hover:scale-110 duration-500"
-                    src={item.image}
-                    alt=""
-                  />
+                  <Link className="my-2 md:my-4" href={`/products/${item._id}`}>
+                    <img
+                      className="w-48 transition ease-in-out  group-hover:-translate-y-1 group-hover:scale-110 duration-500"
+                      src={item.image}
+                      alt=""
+                    />
+                  </Link>
                 </div>
-                {/* <p> {item.rating} </p> */}
-                <h3 className="text-md text-left mt-3">
+
+                <h3 className="hidden md:block text-md text-left mt-3">
                   {" "}
                   {item?.model?.slice(0, 30)}..{" "}
                 </h3>
-                <div className="flex items-end gap-3">
-                  <div>
+                <h3 className="md:hidden text-md text-left mt-3">
+                  {" "}
+                  {item?.model}{" "}
+                </h3>
+                <div className="flex justify-between items-end gap-3">
+                  <div className="basis-1/2">
                     <div>
                       <BsFillStarFill
                         className={`inline mr-1 text-yellow-400 `}
@@ -134,20 +142,18 @@ function Products() {
                         className={`inline mr-1 text-yellow-400 `}
                       />
                     </div>
-                    <h3 className="basis-1/2 md:text-lg lg:text-xl text-secondary text-left">
+                    <h3 className=" md:text-lg lg:text-xl text-secondary text-left">
                       {item.price}{" "}
                       <TbCurrencyTaka className="inline" size={20} />
                     </h3>
                   </div>
-                  <div className="basis-1/2">
-                    <ButtonSmall>
-                      <Link
-                        className="my-2 md:my-4"
-                        href={`/products/${item._id}`}
-                      >
-                        View details
-                      </Link>
-                    </ButtonSmall>
+                  <div className="">
+                    <Link
+                      className="flex justify-between"
+                      href={`/products/${item._id}`}
+                    >
+                      <ButtonSmall>View details</ButtonSmall>
+                    </Link>
                   </div>
                 </div>
                 <div className="group-hover:visible flex justify-center items-center w-10 h-10 rounded-full group-hover:bg-accent group-hover:shadow-lg transition-all ease-in-out duration-500 cursor-pointer absolute top-5 right-5">
