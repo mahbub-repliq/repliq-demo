@@ -10,6 +10,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import ClientOnly from "@/Components/ClientOnly";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
             <Header />
             <div className="pt-4 md:pt-20">{children}</div>
             <Footer />
+            <Toaster />
           </QueryClientProvider>
         </ClientOnly>
       </body>

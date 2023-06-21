@@ -66,7 +66,7 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
                 type="file"
                 name="photo"
                 accept="image/*"
-                onChange={handleFileChange}
+                onChange={e => formik.setFieldValue('photo', e.target.files[0])}
               />
             </div>
             <div className="py-2">

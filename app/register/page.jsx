@@ -4,7 +4,7 @@ import LargeButton from "@/Commons/LargeButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillGithub, AiOutlineLine } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -59,7 +59,6 @@ export default function Register() {
     reader.readAsDataURL(selectedFile);
   };
 
-
   return (
     <div className="flex justify-center items-center overflow-x-hidden">
       <div className="bg-accent rounded-md shadow p-4 md:p-6 lg:p-8">
@@ -74,7 +73,7 @@ export default function Register() {
               type="file"
               name="photo"
               accept="image/*"
-              onChange={handleFileChange}
+              onChange={e => formik.setFieldValue('photo', e.target.files[0])}
             />
           </div>
           <div className="md:flex gap-3 py-2">
@@ -116,7 +115,7 @@ export default function Register() {
               {formik.errors.lastName && (
                 <p className="text-xs pt-2 text-rose-500">
                   {" "}
-                  First name is required.
+                  Last name is required.
                 </p>
               )}
             </div>
@@ -138,7 +137,7 @@ export default function Register() {
             {formik.errors.email && (
               <p className="text-xs pt-2 text-rose-500">
                 {" "}
-                First name is required.
+                Email is required.
               </p>
             )}
           </div>
