@@ -4,7 +4,7 @@ import React from "react";
 function SingleOrder({ params: { id } }) {
   const order = orders.find((item) => item.id == id);
   return (
-    <div className="bg-base-100">
+    <div className="bg-slate-50">
       <PageTitle>Order Details</PageTitle>
       <div className="flex justify-center items-center">
         <ul className="w-96">
