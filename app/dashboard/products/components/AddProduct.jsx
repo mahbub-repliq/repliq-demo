@@ -6,42 +6,31 @@ import * as Yup from "yup";
 import { useState, useRef, useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
-import dummyImage from "@/assets/images/dummy.png";
+import dummyImage from '@/assets/images/dummy.png'
+import Image from "next/image";
 
 function AddProduct({ openDrawer, setOpendrawer }) {
-  const [image, setImage] = useState();
-
   const ref = useRef(null);
 
   const formik = useFormik({
     initialValues: {
-      productname: "",
+      model: "",
       price: "",
-      quantity: "",
-      photo: null,
+      rating: "",
+      image: '',
     },
     validationSchema: Yup.object({
-      productname: Yup.string()
+      model: Yup.string()
         .min(5, "Must be 5 characters or more")
         .required("Required"),
       price: Yup.string().required("Required"),
-      quantity: Yup.string().required("Required"),
-      photo: Yup.mixed(),
+      rating: Yup.string().required("Required"),
+      image: Yup.mixed(),
     }),
     onSubmit: (values) => {
       console.log("Got product info..............", values);
     },
   });
-
-  const handleFileChange = (e) => {
-    const selectedFile = e.currentTarget.files[0];
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setImage(reader.result);
-    };
-    reader.readAsDataURL(selectedFile);
-  };
-
 
   return (
     <div className="">
@@ -50,7 +39,7 @@ function AddProduct({ openDrawer, setOpendrawer }) {
           openDrawer ? "right-0" : "right-[-450px]"
         } transition-all ease-in-out duration-500`}
       >
-        <div className="flex justify-end pt-5 pr-5">
+        <div className="flex justify-end pt-5 pr-5">  
           <MdOutlineClose
             className="cursor-pointer"
             size={25}
@@ -67,21 +56,18 @@ function AddProduct({ openDrawer, setOpendrawer }) {
                   formik.errors.photo ? "border-rose-500" : ""
                 }`}
                 type="file"
-                name="photo"
+                name="image"
                 accept="image/*"
                 ref={ref}
-                onChange={(e) => {
-                  formik.setFieldValue("photo", e.target.files[0]);
-                  handleFileChange(e);
-                }}
+                onChange={(e) => formik.setFieldValue("image", e.target.files[0])}
               />
               <div className="flex justify-start items-center gap-3">
-                <img className="w-24 h-24 rounded-full" src={image ? image : dummyImage} alt="" />
+                <Image className="rounded-full" width={120} height={120} src={formik.values.image ? URL.createObjectURL(formik.values.image) : dummyImage} alt="" />
                 <button
                   onClick={() => ref.current.click()}
                   className="uppercase px-2 py-1 text-primary border border-primary hover:bg-primary hover:text-base-100 rounded-md text-xs transition-all ease-in-out duration-500"
                 >
-                  change
+                  upload
                 </button>
               </div>
             </div>
@@ -89,10 +75,10 @@ function AddProduct({ openDrawer, setOpendrawer }) {
               <label htmlFor="">Product Name</label>
               <input
                 className={`block border rounded p-2 w-full focus:outline-none ${
-                  formik.errors.productname ? "border-rose-500" : ""
+                  formik.errors.model ? "border-rose-500" : ""
                 }`}
-                id="productname"
-                name="productname"
+                id="model"
+                name="model"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -128,23 +114,23 @@ function AddProduct({ openDrawer, setOpendrawer }) {
               )}
             </div>
             <div className="pt-2 pb-4">
-              <label htmlFor="">Quantity</label>
+              <label htmlFor="">Rating</label>
               <input
                 className={`block border rounded w-full p-2 focus:outline-none ${
-                  formik.errors.quantity ? "border-rose-500" : ""
+                  formik.errors.rating ? "border-rose-500" : ""
                 }`}
-                id="quantity"
-                name="quantity"
+                id="rating"
+                name="rating"
                 type="number"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.quantity}
-                placeholder="Quantity"
+                value={formik.values.rating}
+                placeholder="Rating"
               />
-              {formik.errors.quantity && (
+              {formik.errors.rating && (
                 <p className="text-xs pt-2 text-rose-500">
                   {" "}
-                  Quantity is required.
+                  Rating is required.
                 </p>
               )}
             </div>
@@ -157,11 +143,6 @@ function AddProduct({ openDrawer, setOpendrawer }) {
               />
             </LargeButton>
           </form>
-          {formik.values.imagePreview && (
-            <div className="w-48 h-48 mt-5">
-              <img src={formik.values.imagePreview} alt="Preview" />
-            </div>
-          )}
         </div>
       </div>
     </div>

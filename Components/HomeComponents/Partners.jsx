@@ -8,9 +8,11 @@ import brands5 from "../../assets/images/brands/brands_5.jpg";
 import brands6 from "../../assets/images/brands/brands_6.jpg";
 import brands7 from "../../assets/images/brands/brands_7.jpg";
 import brands8 from "../../assets/images/brands/brands_8.jpg";
+
+
 function Partners() {
   return (
-    <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
+    <div className="pt-4 md:pt-8 lg:pt-12 pb-8 md:pb-16 lg:pb-24 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
       <div className="flex justify-between items-center border p-2 md:p-4 lg:p-6">
         <div className="basis-1/12">
           <div className="flex justify-center items-center w-10 h-10 rounded-full bg-accent shadow-lg cursor-pointer">

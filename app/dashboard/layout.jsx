@@ -2,16 +2,15 @@
 
 import DashHeader from "@/Commons/Shared/DashHeader";
 import DashFooter from "@/Commons/Shared/DashFooter";
-import ClientOnly from "@/Components/ClientOnly";
 
 export default function Layout({ children }) {
   return (
-      <body className={` bg-base-100`}>
-        {/* <ClientOnly> */}
-          <DashHeader />
-          <div className="p-4 md:p-8 lg:p-12 bg-slate-50">{children}</div>
-          <DashFooter />
-        {/* </ClientOnly> */}
-      </body>
+    <body className={` bg-base-100`}>
+      <DashHeader />
+      <div className="px-4 md:px-8 lg:px-12 pt-4 md:pt-8 lg:pt-12 pb-20 md:pb-8 lg:pb-12 bg-slate-50">
+        {children}
+      </div>
+      <DashFooter />
+    </body>
   );
 }

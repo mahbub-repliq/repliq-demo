@@ -4,14 +4,17 @@ import LargeButton from "@/Commons/LargeButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { AiFillGithub, AiOutlineLine } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import PageTitle from "@/Commons/PageTitle";
+import dummyImage from '@/assets/images/avatar.jpg'
+import Image from "next/image";
 
 export default function Register() {
   const [showPass, setShowPass] = useState(false);
+  const ref = useRef(null);
 
   const getCharacterValidationError = (str) => {
     return `Your password must have at least 1 ${str} character`;
@@ -23,8 +26,7 @@ export default function Register() {
       lastName: "",
       email: "",
       password: "",
-      photo: null,
-      imagePreview: null,
+      photo: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -48,33 +50,42 @@ export default function Register() {
     },
   });
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.currentTarget.files[0];
-    formik.setFieldValue("file", selectedFile);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const imagePreviewUrl = e.target.result;
-      formik.setFieldValue("imagePreview", imagePreviewUrl);
-    };
-    reader.readAsDataURL(selectedFile);
-  };
-
   return (
-    <div className="flex justify-center items-center overflow-x-hidden">
+    <div className="flex justify-center items-center overflow-x-hidden pb-4 md:pb-8 lg:pb-12">
       <div className="bg-accent rounded-md shadow p-4 md:p-6 lg:p-8">
         <PageTitle>Create your account.</PageTitle>
         <form onSubmit={formik.handleSubmit}>
-          <div className="pb-2">
-            <label htmlFor="">Upload your photo </label>
+          <div className="pb-1 relative">
+            {/* <label htmlFor="">Upload product photo </label> */}
             <input
-              className={`block rounded py-2 ${
+              className={`block rounded py-2 w-1 h-1 absolute top-[-500px] ${
                 formik.errors.photo ? "border-rose-500" : ""
               }`}
               type="file"
-              name="photo"
+              name="image"
               accept="image/*"
-              onChange={e => formik.setFieldValue('photo', e.target.files[0])}
+              ref={ref}
+              onChange={(e) => formik.setFieldValue("photo", e.target.files[0])}
             />
+            <div className="flex justify-start items-center gap-3">
+              <Image
+                className="rounded-full"
+                width={120}
+                height={120}
+                src={
+                  formik.values.photo
+                    ? URL.createObjectURL(formik.values.photo)
+                    : dummyImage
+                }
+                alt=""
+              />
+              <button
+                onClick={() => ref.current.click()}
+                className="uppercase px-2 py-1 text-primary border border-primary hover:bg-primary hover:text-base-100 rounded-md text-xs transition-all ease-in-out duration-500"
+              >
+                Upload
+              </button>
+            </div>
           </div>
           <div className="md:flex gap-3 py-2">
             <div>
@@ -135,10 +146,7 @@ export default function Register() {
               placeholder="Your Email"
             />
             {formik.errors.email && (
-              <p className="text-xs pt-2 text-rose-500">
-                {" "}
-                Email is required.
-              </p>
+              <p className="text-xs pt-2 text-rose-500"> Email is required.</p>
             )}
           </div>
           <div className="py-2 relative">

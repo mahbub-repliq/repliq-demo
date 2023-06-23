@@ -23,13 +23,13 @@ function Products() {
 
   return (
     <div>
-      <div className="relative">
+      <div className={`relative ${openUpdate ? 'opacity-20 ' : ''}`}>
         <PageTitle>Products</PageTitle>
         {isloadingProducts ? (
           <Loader />
         ) : (
           <>
-            <div className="flex justify-center md:justify-end">
+            <div className={`flex justify-center md:justify-end`}>
               <LargeButton>
                 <p onClick={() => setOpendrawer(true)}>Add New Product</p>
               </LargeButton>

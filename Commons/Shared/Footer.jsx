@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 function Footer() {
   const year = new Date().getFullYear();
   return (
-    <div className="pt-4 md:pt-8 lg:pt-12 bg-[#FFFFFF] text-slate-900">
+    <div className="pt-4 md:pt-8 lg:pt-12 bg-accent text-slate-900">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-5 px-4 md:px-8 lg:px-12 border-b pb-5 md:pb-8 lg:pb-12">
         <div className="flex justify-center text-center md:text-start">
           <div className="">
@@ -18,21 +18,21 @@ function Footer() {
             </p>
             <div className="flex justify-center md:justify-start">
               <ul className="flex mt-2">
-                <li className="bg-accent w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
+                <li className="bg-base-100 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
                   <FaFacebookF className="hover:text-secondary" size={20} />
                 </li>
-                <li className="bg-accent w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
+                <li className="bg-base-100 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
                   {" "}
                   <FaInstagram
                     className="hover:text-secondary"
                     size={20}
                   />{" "}
                 </li>
-                <li className="bg-accent w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
+                <li className="bg-base-100 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
                   {" "}
                   <FaTwitter className="hover:text-secondary" size={20} />{" "}
                 </li>
-                <li className="bg-accent w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
+                <li className="bg-base-100 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer mx-1 shadow">
                   {" "}
                   <FaYoutube className="hover:text-secondary" size={20} />{" "}
                 </li>
