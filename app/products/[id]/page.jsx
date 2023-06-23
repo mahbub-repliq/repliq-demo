@@ -6,14 +6,19 @@ import useMultipleDataFetch from "@/hooks/useMultipleDataFetch";
 import PageTitle from "@/Commons/PageTitle";
 import { useRouter } from "next/navigation";
 import { FaHome } from "react-icons/fa";
+import { BsFillStarFill } from "react-icons/bs";
+import toast from 'react-hot-toast';
 
 function SingleProduct({ params: { id } }) {
   const [activeTab, setActiveTab] = useState("0");
+  const [added, setAdded] = useState(false)
   const router = useRouter();
   const [products, posts, isloadingProducts, isloadingPosts] =
     useMultipleDataFetch();
 
   const product = products?.find((item) => item._id == id);
+
+
 
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
@@ -32,37 +37,46 @@ function SingleProduct({ params: { id } }) {
           className="border-0 underline text-secondary"
           onClick={() => router.push("/products")}
         >
-          products
+          Products
         </button>{" "}
         / {product?.model}
       </div>
-      <div className="md:grid md:grid-cols-5 items-center gap-5">
-        <div className=" col-span-2 flex justify-center items-center my-5">
+      <div className="md:grid md:grid-cols-2 items-center gap-5">
+        <div className="flex justify-center items-center my-5">
           <img className="w-full" src={product?.image} alt="" />
         </div>
-        <div className="col-span-3">
+        <div className="">
           <h3 className="text-neutral text-lg md:text-xl lg:text-2xl font-semibold pb-3">
             {" "}
             {product?.model}{" "}
           </h3>
+          <div className="flex items-center mb-3">
+            <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
+            <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
+            <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
+            <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
+            <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
+            <p className="ml-2">(100) <span>Reviews</span> </p>
+          </div>
           <div className="pb-3">
             <p>
-              Price:{" "}
-              <span className="text-secondary font-semibold">
+              <span className="text-secondary text-2xl font-semibold">
                 {product?.price}
               </span>{" "}
               Tk.
             </p>
           </div>
-          <h3 className="text-lg font-semibold pb-3">Feature:</h3>
+          <h3 className="text-lg font-semibold pb-3">Features:</h3>
           <ul className="list-disc pl-4">
             {product?.keyFeature.map((item, index) => (
               <li key={index}> {item} </li>
             ))}
           </ul>
-          <div className="hidden my-5 md:block">
-            <LargeButton>Checkout</LargeButton>
+          <div className="hidden my-5 md:block" onClick={() => (toast.success('Added to cart')) }>
+            <LargeButton>add to cart</LargeButton>
           </div>
+          <p className="font-semibold mb-3">Category: <span className="font-normal capitalize">{product?.category}</span> </p>
+          <p className="font-semibold">Availability: <span className="font-normal"> 500 Products in stock.</span> </p>
         </div>
       </div>
       <div>
@@ -110,8 +124,8 @@ function SingleProduct({ params: { id } }) {
           <li> {product?.spec[6].psu}</li>
         </ul>
       </div>
-      <div className="sticky bottom-4 my-5 md:hidden">
-        <LargeButton>Checkout</LargeButton>
+      <div className="sticky bottom-4 my-5 md:hidden" onClick={() => (toast.success('Added to cart')) }>
+        <LargeButton>add to cart</LargeButton>
       </div>
     </div>
   );

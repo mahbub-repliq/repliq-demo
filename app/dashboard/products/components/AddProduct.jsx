@@ -3,54 +3,43 @@
 import LargeButton from "@/Commons/LargeButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
+import dummyImage from '@/assets/images/dummy.png'
+import Image from "next/image";
 
 function AddProduct({ openDrawer, setOpendrawer }) {
+  const ref = useRef(null);
 
   const formik = useFormik({
     initialValues: {
-      productname: "",
+      model: "",
       price: "",
-      quantity: "",
       rating: "",
-      photo: null,
-      imagePreview: null,
+      image: '',
     },
     validationSchema: Yup.object({
-      productname: Yup.string()
+      model: Yup.string()
         .min(5, "Must be 5 characters or more")
         .required("Required"),
       price: Yup.string().required("Required"),
-      quantity: Yup.string().required("Required"),
-      rating: Yup.string().required("Please enter a rating"),
-      photo: Yup.mixed(),
+      rating: Yup.string().required("Required"),
+      image: Yup.mixed(),
     }),
     onSubmit: (values) => {
       console.log("Got product info..............", values);
     },
   });
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.currentTarget.files[0];
-    formik.setFieldValue("file", selectedFile);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const imagePreviewUrl = e.target.result;
-      formik.setFieldValue("imagePreview", imagePreviewUrl);
-    };
-    reader.readAsDataURL(selectedFile);
-  };
-
   return (
     <div className="">
       <div
-        className={`absolute bg-accent border border-t-0 border-r-0 w-full md:w-96 min-h-screen top-0 ${
-          openDrawer ? "right-0" : "right-[-450px] hidden"
+        className={`bg-accent border border-t-0 border-r-0 w-full md:w-96 min-h-screen fixed top-0 ${
+          openDrawer ? "right-0" : "right-[-450px]"
         } transition-all ease-in-out duration-500`}
       >
-        <div className="flex justify-end pt-5 pr-5">
+        <div className="flex justify-end pt-5 pr-5">  
           <MdOutlineClose
             className="cursor-pointer"
             size={25}
@@ -58,28 +47,38 @@ function AddProduct({ openDrawer, setOpendrawer }) {
           />
         </div>
         <div className="p-5">
-            <PageTitle>Add new product</PageTitle>
+          <PageTitle>Add new product</PageTitle>
           <form onSubmit={formik.handleSubmit}>
-          <div className="pb-2">
-              <label htmlFor="">Upload product photo </label>
+            <div className="pb-1 relative">
+              {/* <label htmlFor="">Upload product photo </label> */}
               <input
-                className={`block rounded py-2 ${
+                className={`block rounded py-2 w-1 h-1 absolute top-[-500px] ${
                   formik.errors.photo ? "border-rose-500" : ""
                 }`}
                 type="file"
-                name="photo"
+                name="image"
                 accept="image/*"
-                onChange={e => formik.setFieldValue('photo', e.target.files[0])}
+                ref={ref}
+                onChange={(e) => formik.setFieldValue("image", e.target.files[0])}
               />
+              <div className="flex justify-start items-center gap-3">
+                <Image className="rounded-full" width={120} height={120} src={formik.values.image ? URL.createObjectURL(formik.values.image) : dummyImage} alt="" />
+                <button
+                  onClick={() => ref.current.click()}
+                  className="uppercase px-2 py-1 text-primary border border-primary hover:bg-primary hover:text-base-100 rounded-md text-xs transition-all ease-in-out duration-500"
+                >
+                  upload
+                </button>
+              </div>
             </div>
             <div className="py-2">
               <label htmlFor="">Product Name</label>
               <input
                 className={`block border rounded p-2 w-full focus:outline-none ${
-                  formik.errors.productname ? "border-rose-500" : ""
+                  formik.errors.model ? "border-rose-500" : ""
                 }`}
-                id="productname"
-                name="productname"
+                id="model"
+                name="model"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -114,44 +113,24 @@ function AddProduct({ openDrawer, setOpendrawer }) {
                 </p>
               )}
             </div>
-            <div className="py-2">
-              <label htmlFor="">Quantity</label>
-              <input
-                className={`block border rounded w-full p-2 focus:outline-none ${
-                  formik.errors.quantity ? "border-rose-500" : ""
-                }`}
-                id="quantity"
-                name="quantity"
-                type="number"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.quantity}
-                placeholder="Quantity"
-              />
-              {formik.errors.quantity && (
-                <p className="text-xs pt-2 text-rose-500">
-                  {" "}
-                  Quantity is required.
-                </p>
-              )}
-            </div>
-            <div className="py-2 relative">
+            <div className="pt-2 pb-4">
               <label htmlFor="">Rating</label>
               <input
                 className={`block border rounded w-full p-2 focus:outline-none ${
                   formik.errors.rating ? "border-rose-500" : ""
                 }`}
-                type="number"
                 id="rating"
                 name="rating"
+                type="number"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.rating}
+                placeholder="Rating"
               />
               {formik.errors.rating && (
                 <p className="text-xs pt-2 text-rose-500">
                   {" "}
-                  {formik.errors.rating}
+                  Rating is required.
                 </p>
               )}
             </div>
@@ -164,11 +143,6 @@ function AddProduct({ openDrawer, setOpendrawer }) {
               />
             </LargeButton>
           </form>
-          {formik.values.imagePreview && (
-            <div className="w-48 h-48 mt-5">
-              <img src={formik.values.imagePreview} alt="Preview" />
-            </div>
-          )}
         </div>
       </div>
     </div>

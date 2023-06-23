@@ -13,8 +13,8 @@ function Dashboard() {
   const [expandMenu, setExpandMenu] = useState(true);
 
   return (
-    <div className=" bg-base-100 relative">
-      <div className="">
+    <div className=" relative">
+      <div className="min-h-screen">
         <h3 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-4 md:mb-8 lg:mb-12">
           Dashboard
         </h3>

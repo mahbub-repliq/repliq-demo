@@ -4,6 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "../Commons/Shared/Header";
 import Footer from "../Commons/Shared/Footer";
+import { usePathname } from "next/navigation";
 import {
   QueryClient,
   QueryClientProvider,
@@ -22,14 +23,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+
   return (
     <html lang="en">
       <body className={`inter.className`}>
         <ClientOnly>
           <QueryClientProvider client={queryClient}>
-            <Header />
-            <div className="pt-4 md:pt-20">{children}</div>
-            <Footer />
+            {!pathname.includes("/dashboard") && <Header />}
+            <div className={`${!pathname.includes("/dashboard") && 'pt-4 md:pt-20'}`}>{children}</div>
+            {!pathname.includes("/dashboard") && <Footer />}
             <Toaster />
           </QueryClientProvider>
         </ClientOnly>

@@ -43,8 +43,8 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
   return (
     <div>
       <div
-        className={`absolute bg-accent border border-t-0 border-r-0 w-full md:w-96 min-h-screen top-0 ${
-          openProfile ? "right-0" : "right-[-450px] hidden"
+        className={` bg-accent border border-t-0 border-r-0 w-full md:w-96 min-h-screen fixed top-0 ${
+          openProfile ? "right-0" : "right-[-450px]"
         } transition-all ease-in-out duration-500`}
       >
         <div className="flex justify-end pt-5 pr-5">
@@ -130,7 +130,7 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
                 </p>
               )}
             </div>
-            <div className="py-2 relative">
+            <div className="pt-2 pb-4">
               <label htmlFor="">Phone</label>
               <input
                 className={`block border rounded w-full p-2 focus:outline-none ${

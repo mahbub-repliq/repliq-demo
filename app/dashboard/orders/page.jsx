@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import ButtonSmall from "@/Commons/ButtonSmall";
 import Modal from "@/Commons/Modal";
@@ -10,36 +10,98 @@ function Orders() {
   return (
     <div className="relative">
       <PageTitle>Orders</PageTitle>
-      <table className="border-collapse border border-neutral w-full">
-        <thead>
-          <tr className="border border-neutral">
-            <th className="hidden md:block px-2 py-2">Number</th>
-            <th className="border border-neutral px-2 py-2">Product</th>
-            <th className="border border-neutral px-2 py-2">Customer</th>
-            <th className="border border-neutral px-2 py-2">Email</th>
-            <th className="border border-neutral px-2 py-2">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders?.map((item, index) => (
-            <tr key={index} className="border border-neutral">
-              <td className="hidden md:block px-2 py-2">
-                {index + 1}
-              </td>
-              <td className="border border-neutral px-2 py-2">
-                {item.product}{" "}
-              </td>
-              <td className="border border-neutral px-2 py-2">{item.name}</td>
-              <td className="group border border-neutral px-2 py-2">{item.email}</td>
-              <td className="border border-neutral px-2 py-2">
-                <Link href={`/dashboard/orders/${item.id}`} className="flex justify-center items-center">
-                  <ButtonSmall>Details</ButtonSmall>
-                </Link>
-              </td>
+
+      <div className="hidden lg:block">
+        <table className=" border-collapse border rounded border-accent w-full">
+          <thead className="">
+            <tr className="bg-accent rounded">
+              <th className="hidden md:block px-2 py-5 text-left text-neutral">
+                Product
+              </th>
+              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                Name
+              </th>
+              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                Customer
+              </th>
+              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                Email
+              </th>
+              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                Action
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((item, index) => (
+              <tr key={index} className="border border-accent bg-base-100">
+                <td className="hidden md:block px-2 py-5">
+                  {" "}
+                  <div className="flex justify-center items-center">
+                    <img
+                      className="w-24 h-24 rounded "
+                      src={item?.image}
+                      alt=""
+                    />
+                  </div>{" "}
+                </td>
+                <td className="border-y border-accent px-2 py-5">
+                  {item.product}
+                </td>
+                <td className="border-y border-accent px-2 py-5">
+                  {item.name}
+                </td>
+                <td className="group border-y border-accent px-2 py-5">
+                  {item.email}
+                </td>
+                <td className="border-y border-accent px-2 py-5">
+                  <div className="flex justify-start">
+                    <Link
+                      href={`/dashboard/orders/${item.id}`}
+                      className="flex justify-center items-center"
+                    >
+                      {/* <button className="bg-primary hover:bg-secondary text-base-100 rounded-md px-3 py-1">Details</button> */}
+                      <ButtonSmall>Details</ButtonSmall>
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="grid md:grid-cols-2 gap-5 mt-5 lg:hidden">
+        {orders.map((item, index) => (
+          <div
+            key={index}
+            className="bg-base-100 border border-gray-200 rounded-md"
+          >
+            <div className="flex justify-between gap-3 p-5">
+              <div className="basis-2/3">
+                <p className="text-neutral font-semibold"> {item.product} </p>
+                <p className="font-medium text-gray-400 py-1">
+                  name: <span className="text-secondary">{item.name}</span>{" "}
+                </p>
+                <p className="font-medium text-gray-400">
+                  Email: <span className="text-secondary">{item.email}</span>{" "}
+                </p>
+                <div className="flex justify-start pt-2">
+                  <Link
+                    href={`/dashboard/orders/${item.id}`}
+                    className="flex justify-center items-center"
+                  >
+                    {/* <button className="bg-primary hover:bg-secondary text-base-100 rounded-md px-3 py-1">Details</button> */}
+                    <ButtonSmall>Details</ButtonSmall>
+                  </Link>
+                </div>
+              </div>
+              <div className="flex justify-center items-center basis-1/3">
+                <img className="w-24 h-24 rounded " src={item.image} alt="" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -56,6 +118,7 @@ const orders = [
     date: "12 June 2023",
     address: "dhaka",
     payment: "home delivery",
+    image: "https://i.ibb.co/0sbcGXN/8.webp",
   },
   {
     id: 2,
@@ -66,6 +129,7 @@ const orders = [
     date: "17 June 2023",
     address: "chittagong",
     payment: "home delivery",
+    image: "https://i.ibb.co/kHDfndn/10.webp",
   },
   {
     id: 3,
@@ -76,6 +140,7 @@ const orders = [
     date: "12 June 2023",
     address: "dhaka",
     payment: "home delivery",
+    image: "https://i.ibb.co/3cCPKvH/4.webp",
   },
   {
     id: 4,
@@ -86,6 +151,7 @@ const orders = [
     date: "13 June 2023",
     address: "rajshahi",
     payment: "bank",
+    image: "https://i.ibb.co/0sbcGXN/8.webp",
   },
   {
     id: 5,
@@ -96,5 +162,6 @@ const orders = [
     date: "15 June 2023",
     address: "sylet",
     payment: "bkash",
+    image: "https://i.ibb.co/vY3JDdg/12.webp",
   },
 ];
