@@ -9,7 +9,7 @@ import { AiFillGithub, AiOutlineLine } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import PageTitle from "@/Commons/PageTitle";
-import dummyImage from '@/assets/images/avatar.jpg'
+import dummyImage from "@/assets/images/avatar.jpg";
 import Image from "next/image";
 
 export default function Register() {
@@ -26,7 +26,7 @@ export default function Register() {
       lastName: "",
       email: "",
       password: "",
-      photo: '',
+      photo: "",
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -68,17 +68,17 @@ export default function Register() {
               onChange={(e) => formik.setFieldValue("photo", e.target.files[0])}
             />
             <div className="flex justify-start items-center gap-3">
-              <Image
-                className="rounded-full"
-                width={120}
-                height={120}
-                src={
-                  formik.values.photo
-                    ? URL.createObjectURL(formik.values.photo)
-                    : dummyImage
-                }
-                alt=""
-              />
+                <Image
+                  className="rounded-full"
+                  width={120}
+                  height={120}
+                  src={
+                    formik.values.photo
+                      ? URL.createObjectURL(formik.values.photo)
+                      : dummyImage
+                  }
+                  alt=""
+                />
               <button
                 onClick={() => ref.current.click()}
                 className="uppercase px-2 py-1 text-primary border border-primary hover:bg-primary hover:text-base-100 rounded-md text-xs transition-all ease-in-out duration-500"

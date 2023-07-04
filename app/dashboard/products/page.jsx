@@ -49,21 +49,13 @@ function Products() {
           <>
             <div className={`flex justify-center md:justify-end`}></div>
             <div className="my-5 md:flex justify-between items-end">
-              {/* <LargeButton> */}
               <button
                 className="w-full md:hidden px-3 md:px-5 py-1 md:py-2 text-md md:font-semibold uppercase bg-primary hover:bg-secondary rounded text-base-100 transition-all ease-in-out duration-500"
                 onClick={() => setOpendrawer(true)}
               >
                 Add New Product
               </button>
-              {/* </LargeButton> */}
               <div className="">
-                {/* <label
-                  htmlFor="countries"
-                  class="block mb-2 font-medium text-neutral"
-                >
-                  Select an option
-                </label> */}
                 <select
                   value={selectedValue}
                   onChange={(e) => setSelectedValue(e.target.value)}
@@ -87,12 +79,11 @@ function Products() {
                 </LargeButton>
               </div>
             </div>
-
             <div className="hidden lg:block">
               <table className=" border-collapse border rounded border-accent w-full">
                 <thead className="">
                   <tr className="bg-accent rounded">
-                    <th className="hidden md:block px-2 py-5 text-left text-neutral">
+                    <th className="hidden md:block pl-4 py-5 text-left text-neutral">
                       Product
                     </th>
                     <th className="border-y border-accent px-2 py-5 text-left text-neutral">
@@ -115,9 +106,9 @@ function Products() {
                       key={index}
                       className="border border-accent bg-base-100"
                     >
-                      <td className="hidden md:block px-2 py-5">
+                      <td className="hidden md:block pl-4 py-5">
                         {" "}
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-start items-center">
                           <img
                             className="w-24 h-24 rounded "
                             src={item.image}
