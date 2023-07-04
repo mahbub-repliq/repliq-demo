@@ -67,8 +67,7 @@ function Products() {
                 <select
                   value={selectedValue}
                   onChange={(e) => setSelectedValue(e.target.value)}
-                  id="countries"
-                  class="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-full md:w-72 px-3 py-2.5 mt-4 md:mt-0"
+                  class="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-full md:w-72 px-3 py-2 md:py-2.5 mt-4 md:mt-0"
                 >
                   <option defaultValue={"Choose by category"}>
                     Choose by category
@@ -88,6 +87,7 @@ function Products() {
                 </LargeButton>
               </div>
             </div>
+
             <div className="hidden lg:block">
               <table className=" border-collapse border rounded border-accent w-full">
                 <thead className="">
@@ -154,36 +154,14 @@ function Products() {
                             Delete
                           </button>
                         </div>
-                        {/* <Modal
-                          modalOpen={modalOpen}
-                          setModalOpen={setModalOpen}
-                        >
-                          <div className="bg-white rounded-lg p-8 z-10 relative">
-                            <h2 className="text-lg text-center font-semibold mb-4">
-                              Are you sure to delete this product permantly?
-                            </h2>
-                            <div className="flex justify-center gap-3">
-                              <button
-                                className="bg-secondary text-base-100 rounded px-3 py-1"
-                                onClick={() => setModalOpen(!modalOpen)}
-                              >
-                                Yes
-                              </button>
-                              <button
-                                className="bg-rose-500 text-base-100 rounded px-3 py-1"
-                                onClick={() => setModalOpen(!modalOpen)}
-                              >
-                                No
-                              </button>
-                            </div>
-                          </div>
-                        </Modal> */}
                       </td>
                     </tr>
+
                   ))}
                 </tbody>
               </table>
             </div>
+
             <div className="grid md:grid-cols-2 gap-4 mt-4 lg:hidden">
               {queryProducts?.map((item, index) => (
                 <div
