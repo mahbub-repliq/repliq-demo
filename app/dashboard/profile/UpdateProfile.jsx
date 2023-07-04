@@ -3,19 +3,21 @@
 import LargeButton from "@/Commons/LargeButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
+import Image from "next/image";
+import dummyImage from '@/assets/images/avatar.jpg'
 
 function UpdateProfile({ openProfile, setOpenProfile }) {
+  const ref = useRef(null);
   const formik = useFormik({
     initialValues: {
       name: "",
       profession: "",
       email: "",
       phone: "",
-      photo: null,
-      imagePreview: null,
+      photo: '',
     },
     validationSchema: Yup.object({
       name: Yup.string(),
@@ -29,21 +31,11 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
     },
   });
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.currentTarget.files[0];
-    formik.setFieldValue("file", selectedFile);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const imagePreviewUrl = e.target.result;
-      formik.setFieldValue("imagePreview", imagePreviewUrl);
-    };
-    reader.readAsDataURL(selectedFile);
-  };
 
   return (
     <div>
       <div
-        className={` bg-accent border border-t-0 border-r-0 w-full md:w-96 min-h-screen fixed top-0 ${
+        className={` bg-accent border border-t-0 border-r-0 w-full pb-10 md:w-96 fixed top-0 ${
           openProfile ? "right-0" : "right-[-450px]"
         } transition-all ease-in-out duration-500`}
       >
@@ -57,18 +49,38 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
         <div className="p-5">
           <PageTitle>Update Profile</PageTitle>
           <form onSubmit={formik.handleSubmit}>
-            <div className="pb-2">
-              <label htmlFor="">Upload your photo </label>
-              <input
-                className={`block rounded py-2 ${
-                  formik.errors.photo ? "border-rose-500" : ""
-                }`}
-                type="file"
-                name="photo"
-                accept="image/*"
-                onChange={e => formik.setFieldValue('photo', e.target.files[0])}
+          <div className="pb-1 relative">
+            <label htmlFor="">Upload your photo </label>
+            <input
+              className={`block rounded py-2 w-1 h-1 absolute top-[-500px] ${
+                formik.errors.photo ? "border-rose-500" : ""
+              }`}
+              type="file"
+              name="photo"
+              accept="image/*"
+              ref={ref}
+              onChange={(e) => formik.setFieldValue("photo", e.target.files[0])}
+            />
+            <div className="flex justify-start items-center gap-3">
+              <Image
+                className="rounded-full"
+                width={120}
+                height={120}
+                src={
+                  formik.values.photo
+                    ? URL.createObjectURL(formik.values.photo)
+                    : dummyImage
+                }
+                alt=""
               />
+              <button
+                onClick={() => ref.current.click()}
+                className="uppercase px-2 py-1 text-primary border border-primary hover:bg-primary hover:text-base-100 rounded-md text-xs transition-all ease-in-out duration-500"
+              >
+                Upload
+              </button>
             </div>
+          </div>
             <div className="py-2">
               <label htmlFor="">Name</label>
               <input
@@ -126,7 +138,7 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
               {formik.errors.email && (
                 <p className="text-xs pt-2 text-rose-500">
                   {" "}
-                  email is required.
+                  Email is required.
                 </p>
               )}
             </div>
@@ -160,11 +172,6 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
               />
             </LargeButton>
           </form>
-          {formik.values.imagePreview && (
-            <div className="w-48 h-48 mt-5">
-              <img src={formik.values.imagePreview} alt="Preview" />
-            </div>
-          )}
         </div>
       </div>
     </div>

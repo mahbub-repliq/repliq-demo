@@ -7,18 +7,28 @@ import PageTitle from "@/Commons/PageTitle";
 import { useRouter } from "next/navigation";
 import { FaHome } from "react-icons/fa";
 import { BsFillStarFill } from "react-icons/bs";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 
 function SingleProduct({ params: { id } }) {
   const [activeTab, setActiveTab] = useState("0");
-  const [added, setAdded] = useState(false)
+  const [added, setAdded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const router = useRouter();
   const [products, posts, isloadingProducts, isloadingPosts] =
     useMultipleDataFetch();
 
   const product = products?.find((item) => item._id == id);
-
-
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+  const handleIncrease = () => {
+    if (quantity < 500) {
+      setQuantity(quantity + 1);
+    }
+  };
 
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 bg-base-100">
@@ -56,7 +66,9 @@ function SingleProduct({ params: { id } }) {
             <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
             <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
             <BsFillStarFill className={`inline mr-1 text-yellow-400 `} />
-            <p className="ml-2">(100) <span>Reviews</span> </p>
+            <p className="ml-2">
+              (100) <span>Reviews</span>{" "}
+            </p>
           </div>
           <div className="pb-3">
             <p>
@@ -72,11 +84,36 @@ function SingleProduct({ params: { id } }) {
               <li key={index}> {item} </li>
             ))}
           </ul>
-          <div className="hidden my-5 md:block" onClick={() => (toast.success('Added to cart')) }>
+          <div className="mt-4">
+            <div className="flex items-center gap-5">
+              <p className="font-semibold">Quantity:</p>
+              <div className="flex flex-row justify-around items-center gap-5 border-2 border-accent p-4 w-48 ">
+                <MdOutlineRemove
+                  size={25}
+                  onClick={handleDecrease}
+                />
+                {quantity}
+                <MdOutlineAdd
+                  size={25}
+                  onClick={handleIncrease}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="hidden my-5 md:block"
+            onClick={() => toast.success("Added to cart")}
+          >
             <LargeButton>add to cart</LargeButton>
           </div>
-          <p className="font-semibold mb-3">Category: <span className="font-normal capitalize">{product?.category}</span> </p>
-          <p className="font-semibold">Availability: <span className="font-normal"> 500 Products in stock.</span> </p>
+          <p className="font-semibold mb-3">
+            Category:{" "}
+            <span className="font-normal capitalize">{product?.category}</span>{" "}
+          </p>
+          <p className="font-semibold">
+            Availability:{" "}
+            <span className="font-normal"> 500 Products in stock.</span>{" "}
+          </p>
         </div>
       </div>
       <div>
@@ -124,7 +161,10 @@ function SingleProduct({ params: { id } }) {
           <li> {product?.spec[6].psu}</li>
         </ul>
       </div>
-      <div className="sticky bottom-4 my-5 md:hidden" onClick={() => (toast.success('Added to cart')) }>
+      <div
+        className="sticky bottom-4 my-5 md:hidden"
+        onClick={() => toast.success("Added to cart")}
+      >
         <LargeButton>add to cart</LargeButton>
       </div>
     </div>

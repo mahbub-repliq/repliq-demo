@@ -44,7 +44,7 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center pb-4 md:pb-8 lg:pb-12">
-      <div className="bg-accent rounded-md shadow p-4 md:p-6 lg:p-8">
+      <div className="bg-accent rounded-md shadow w-96 p-4 md:p-6 lg:p-8">
         <PageTitle>Login your account.</PageTitle>
         <form onSubmit={formik.handleSubmit}>
           <div className="py-2">
