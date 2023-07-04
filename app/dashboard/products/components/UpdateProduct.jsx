@@ -15,15 +15,15 @@ function UpdateProduct({ openUpdate, setOpenUpdate, product }) {
     initialValues: {
       model: "",
       price: "",
-      ratirg: "",
-      image: "",
+      rating: "",
+      image: '',
     },
     validationSchema: Yup.object({
-      productname: Yup.string()
+      model: Yup.string()
         .min(5, "Must be 5 characters or more")
         .required("Required"),
       price: Yup.string().required("Required"),
-      quantity: Yup.string().required("Required"),
+      rating: Yup.string().required("Required"),
       image: Yup.mixed(),
     }),
     onSubmit: (values) => {
@@ -53,7 +53,7 @@ function UpdateProduct({ openUpdate, setOpenUpdate, product }) {
               <input
                 className={`block rounded py-2 w-1 h-1 absolute top-[-500px]`}
                 type="file"
-                name="photo"
+                name="image"
                 accept="image/*"
                 ref={ref}
                 onChange={(e) => {
@@ -83,13 +83,13 @@ function UpdateProduct({ openUpdate, setOpenUpdate, product }) {
               <label htmlFor="">Product Name</label>
               <input
                 className={`block border rounded p-2 w-full focus:outline-none`}
-                id="productname"
-                name="productname"
+                id="model"
+                name="model"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 defaultValue={
-                  product ? product.model : formik.values.productname
+                  product ? product.model : formik.values.model
                 }
                 placeholder="Product name"
               />
@@ -108,16 +108,16 @@ function UpdateProduct({ openUpdate, setOpenUpdate, product }) {
               />
             </div>
             <div className="pt-1 pb-4">
-              <label htmlFor="">Quantity</label>
+              <label htmlFor="">Rating</label>
               <input
                 className={`block border rounded w-full p-2 focus:outline-none`}
-                id="quantity"
-                name="quantity"
+                id="rating"
+                name="rating"
                 type="number"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                defaultValue={product ? "500" : formik.values.quantity}
-                placeholder="Quantity"
+                defaultValue={product ? product.rating : formik.values.rating}
+                placeholder="Rating"
               />
             </div>
             <LargeButton>

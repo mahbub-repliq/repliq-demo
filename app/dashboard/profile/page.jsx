@@ -12,12 +12,13 @@ import {
 import LargeButton from "@/Commons/LargeButton";
 import { MdOutlineClose } from "react-icons/md";
 import UpdateProfile from "./UpdateProfile";
+import dummyImage from '@/assets/images/avatar.jpg'
 
 function Profile() {
   const [openProfile, setOpenProfile] = useState(false);
   return (
     <div>
-      <div className="relative">
+      <div className={`relative ${openProfile ? 'opacity-20 ' : ''}`}>
         <PageTitle>Profile</PageTitle>
         <div className="flex justify-center">
           <BsPersonCircle size={100} />

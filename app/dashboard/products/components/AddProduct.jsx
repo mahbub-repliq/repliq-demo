@@ -82,10 +82,10 @@ function AddProduct({ openDrawer, setOpendrawer }) {
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.productname}
+                value={formik.values.model}
                 placeholder="Product name"
               />
-              {formik.errors.productname && (
+              {formik.errors.model && (
                 <p className="text-xs pt-2 text-rose-500">
                   {" "}
                   Product name is required.

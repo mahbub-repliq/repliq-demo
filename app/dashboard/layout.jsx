@@ -4,7 +4,6 @@ import DashHeader from "@/Commons/Shared/DashHeader";
 import DashFooter from "@/Commons/Shared/DashFooter";
 
 export default function Layout({ children }) {
-  
   return (
     <body className={` bg-base-100 `}>
         <DashHeader />
