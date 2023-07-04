@@ -6,37 +6,42 @@ function SingleOrder({ params: { id } }) {
   return (
     <div className="bg-slate-50">
       <PageTitle>Order Details</PageTitle>
-      <div className="flex justify-center items-center">
-        <ul className="w-96">
-          <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Product</p>
-            <p className="basis-3/4">: {order.product}</p>
+      <div className="md:flex  items-center bg-accent rounded border border-gray-200">
+        <div className=" flex justify-start items-center p-5 rounded-full">
+          <img className="w-full h-full rounded " src={order.image} alt="" />
+        </div>{" "}
+        <div className="w-full px-5 pt-0 pb-5 md:px-0 md:pb-0">
+          <ul className="">
+          <li className="flex flex-row gap-4">
+            <p className="basis-1/3 md:basis-1/4 text-lg">Product</p>
+            <p className="basis-2/3 md:basis-3/4">: {order.product}</p>
           </li>
           <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Customer name</p>
-            <p className="basis-3/4 capitalize">: {order.name}</p>
+            <p className="basis-1/3 md:basis-1/4 text-lg">Customer name</p>
+            <p className="basis-2/3 md:basis-3/4 capitalize">: {order.name}</p>
           </li>
           <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Email</p>
-            <p className="basis-3/4">: {order.email}</p>
+            <p className="basis-1/3 md:basis-1/4 text-lg">Email</p>
+            <p className="basis-2/3 md:basis-3/4">: {order.email}</p>
           </li>
           <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Quantity</p>
-            <p className="basis-3/4">: {order.quantity}</p>
+            <p className="basis-1/3 md:basis-1/4 text-lg">Quantity</p>
+            <p className="basis-2/3 md:basis-3/4">: {order.quantity}</p>
           </li>
           <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Address</p>
-            <p className="basis-3/4 capitalize">: {order.address}</p>
+            <p className="basis-1/3 md:basis-1/4 text-lg">Address</p>
+            <p className="basis-2/3 md:basis-3/4 capitalize">: {order.address}</p>
           </li>
           <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Date</p>
-            <p className="basis-3/4">: {order.date}</p>
+            <p className="basis-1/3 md:basis-1/4 text-lg">Date</p>
+            <p className="basis-2/3 md:basis-3/4">: {order.date}</p>
           </li>
           <li className="flex gap-4">
-            <p className="basis-1/4 text-lg">Payment type</p>
-            <p className="basis-3/4 capitalize">: {order.payment}</p>
+            <p className="basis-1/3 md:basis-1/4 text-lg">Payment type</p>
+            <p className="basis-2/3 md:basis-3/4 capitalize">: {order.payment}</p>
           </li>
         </ul>
+        </div>
       </div>
     </div>
   );
@@ -54,6 +59,7 @@ const orders = [
     date: "12 June 2023",
     address: "dhaka",
     payment: "home delivery",
+    image: "https://i.ibb.co/0sbcGXN/8.webp",
   },
   {
     id: 2,
@@ -64,6 +70,7 @@ const orders = [
     date: "17 June 2023",
     address: "chittagong",
     payment: "home delivery",
+    image: "https://i.ibb.co/kHDfndn/10.webp",
   },
   {
     id: 3,
@@ -74,6 +81,7 @@ const orders = [
     date: "12 June 2023",
     address: "dhaka",
     payment: "home delivery",
+    image: "https://i.ibb.co/3cCPKvH/4.webp",
   },
   {
     id: 4,
@@ -84,6 +92,7 @@ const orders = [
     date: "13 June 2023",
     address: "rajshahi",
     payment: "bank",
+    image: "https://i.ibb.co/0sbcGXN/8.webp",
   },
   {
     id: 5,
@@ -94,5 +103,6 @@ const orders = [
     date: "15 June 2023",
     address: "sylet",
     payment: "bkash",
+    image: "https://i.ibb.co/vY3JDdg/12.webp",
   },
 ];
