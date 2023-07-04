@@ -47,35 +47,35 @@ function Products() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <table className=" border-collapse border rounded border-accent w-full">
+              <table className="ring-1 ring-gray-200 rounded-md w-full overflow-hidden">
                 <thead className="">
-                  <tr className="bg-accent rounded">
-                    <th className="hidden md:block px-2 py-5 text-left text-neutral">
+                  <tr className="bg-accent">
+                    <th className="hidden md:block pl-4 py-5 text-left text-neutral">
                       Product
                     </th>
-                    <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                    <th className="px-2 py-5 text-left text-neutral">
                       Name
                     </th>
-                    <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                    <th className="px-2 py-5 text-left text-neutral">
                       Price
                     </th>
-                    <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                    <th className="px-2 py-5 text-left text-neutral">
                       Quantity
                     </th>
-                    <th className="border-y border-accent px-2 py-5 text-left text-neutral">
+                    <th className="px-2 py-5 text-left text-neutral">
                       Action
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y">
                   {products.map((item, index) => (
                     <tr
                       key={index}
                       className="border border-accent bg-base-100"
                     >
-                      <td className="hidden md:block px-2 py-5">
+                      <td className="hidden md:block px-4 py-5">
                         {" "}
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-start items-center">
                           <img
                             className="w-24 h-24 rounded "
                             src={item.image}
@@ -83,16 +83,16 @@ function Products() {
                           />
                         </div>{" "}
                       </td>
-                      <td className="border-y border-accent px-2 py-5">
+                      <td className="px-2 py-5">
                         {item.model}
                       </td>
-                      <td className="border-y border-accent px-2 py-5">
+                      <td className="px-2 py-5">
                         {item.price}
                       </td>
-                      <td className="group border-y border-accent px-2 py-5">
+                      <td className="px-2 py-5">
                         500
                       </td>
-                      <td className="border-y border-accent px-2 py-5">
+                      <td className="px-2 py-5">
                         <div className="flex justify-center md:justify-start items-center gap-10 md:gap-3">
                           <button
                             className="border border-primary hover:bg-primary text-primary hover:text-base-100 px-3 py-2 flex justify-center items-center gap-2 rounded-md transition-all ease-in-out duration-500 uppercase text-xs"
