@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import LargeButton from "@/Commons/LargeButton";
 import { RxDividerVertical } from "react-icons/rx";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -8,16 +7,31 @@ import ButtonSmall from "@/Commons/ButtonSmall";
 import Link from "next/link";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsFillStarFill } from "react-icons/bs";
 import Loader from "@/Commons/Loader";
 import useMultipleDataFetch from "@/hooks/useMultipleDataFetch";
 
 function Products() {
-  const [activeTab, setActiveTab] = useState("0");
+  const [activeTab, setActiveTab] = useState(0);
   const [wishlisted, setWishlisted] = useState(true);
   const [products, posts, isloadingProducts, isloadingPosts] =
     useMultipleDataFetch();
+
+  const categories = [
+    "smartphone",
+    "laptop",
+    "camera",
+    "laptop",
+    "accessories",
+  ];
+
+  const findCategory = categories.find((item, index) => index === activeTab);
+
+  const filterProduct = products?.filter(
+    (item) => item.category == findCategory
+  );
+
 
   return (
     <div className="py-4 md:py-8 lg:py-12 px-4 md:px-8 lg:px-12 bg-[#FFFFFF]">
@@ -28,7 +42,7 @@ function Products() {
           </h2>
           <ul className="hidden md:flex gap-4 text-sm md:text-lg">
             <li
-              onClick={() => setActiveTab("0")}
+              onClick={() => setActiveTab(0)}
               className={`pb-4 border-b-2 ${
                 activeTab == 0 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
@@ -36,7 +50,7 @@ function Products() {
               Smartphones & Tablets
             </li>
             <li
-              onClick={() => setActiveTab("1")}
+              onClick={() => setActiveTab(1)}
               className={`pb-4 border-b-2 ${
                 activeTab == 1 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
@@ -44,7 +58,7 @@ function Products() {
               Computers & Laptops
             </li>
             <li
-              onClick={() => setActiveTab("2")}
+              onClick={() => setActiveTab(2)}
               className={`pb-4 border-b-2 ${
                 activeTab == 2 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
@@ -52,7 +66,7 @@ function Products() {
               Gadgets
             </li>
             <li
-              onClick={() => setActiveTab("3")}
+              onClick={() => setActiveTab(3)}
               className={`pb-4 border-b-2 ${
                 activeTab == 3 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
@@ -60,7 +74,7 @@ function Products() {
               Video Games
             </li>
             <li
-              onClick={() => setActiveTab("4")}
+              onClick={() => setActiveTab(4)}
               className={`pb-4 border-b-2 ${
                 activeTab == 4 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
@@ -100,7 +114,7 @@ function Products() {
           <Loader />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
-            {products?.slice(0, 4).map((item, index) => (
+            {filterProduct?.slice(0, 4).map((item, index) => (
               <div
                 key={index}
                 className="bg-[#FEFDFF] group rounded-lg border p-3 md:p-4 lg:p-5 relative"
@@ -179,7 +193,6 @@ function Products() {
           </div>
         )}
       </div>
-
     </div>
   );
 }
