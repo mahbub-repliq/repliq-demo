@@ -59,7 +59,7 @@ function Products() {
                 <select
                   value={selectedValue}
                   onChange={(e) => setSelectedValue(e.target.value)}
-                  class="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-full md:w-72 px-3 py-2 md:py-2.5 mt-4 md:mt-0"
+                  className="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-full md:w-72 px-3 py-2 md:py-2.5 mt-4 md:mt-0"
                 >
                   <option defaultValue={"Choose by category"}>
                     Choose by category
