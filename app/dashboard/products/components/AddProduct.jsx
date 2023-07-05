@@ -8,6 +8,7 @@ import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
 import dummyImage from '@/assets/images/dummy.png'
 import Image from "next/image";
+import { toast } from "react-hot-toast";
 
 function AddProduct({ openDrawer, setOpendrawer }) {
   const ref = useRef(null);
@@ -29,6 +30,7 @@ function AddProduct({ openDrawer, setOpendrawer }) {
     }),
     onSubmit: (values) => {
       console.log("Got product info..............", values);
+      toast.success("Product added");
     },
   });
 

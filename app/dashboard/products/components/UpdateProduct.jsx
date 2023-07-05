@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
 import Image from "next/image";
+import { toast } from "react-hot-toast";
 
 function UpdateProduct({ openUpdate, setOpenUpdate, product }) {
   const ref = useRef(null);
@@ -28,6 +29,7 @@ function UpdateProduct({ openUpdate, setOpenUpdate, product }) {
     }),
     onSubmit: (values) => {
       console.log("Got product info..............", values);
+      toast.success("Product updated");
     },
   });
 

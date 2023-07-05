@@ -8,6 +8,7 @@ import { MdOutlineClose } from "react-icons/md";
 import PageTitle from "@/Commons/PageTitle";
 import Image from "next/image";
 import dummyImage from '@/assets/images/avatar.jpg'
+import { toast } from "react-hot-toast";
 
 function UpdateProfile({ openProfile, setOpenProfile }) {
   const ref = useRef(null);

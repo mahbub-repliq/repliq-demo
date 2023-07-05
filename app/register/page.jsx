@@ -11,6 +11,8 @@ import { FcGoogle } from "react-icons/fc";
 import PageTitle from "@/Commons/PageTitle";
 import dummyImage from "@/assets/images/avatar.jpg";
 import Image from "next/image";
+import toast from 'react-hot-toast';
+
 
 export default function Register() {
   const [showPass, setShowPass] = useState(false);
@@ -47,6 +49,7 @@ export default function Register() {
 
     onSubmit: (values) => {
       console.log("Got register info..............", values);
+      toast.success("Successfully registered");
     },
   });
 
