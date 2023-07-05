@@ -46,11 +46,11 @@ function UpdateProfile({ openProfile, setOpenProfile }) {
             onClick={() => setOpenProfile(!openProfile)}
           />
         </div>
-        <div className="p-5">
-          <PageTitle>Update Profile</PageTitle>
+        <div className="px-5 pt-2 pb-5">
+          <h3 className="text-center text-xl md:text-2xl lg:text-3xl text-neutral font-semibold mb-4 md:mb-8">Update Profile</h3>
           <form onSubmit={formik.handleSubmit}>
           <div className="pb-1 relative">
-            <label htmlFor="">Upload your photo </label>
+            {/* <label htmlFor="">Upload your photo </label> */}
             <input
               className={`block rounded py-2 w-1 h-1 absolute top-[-500px] ${
                 formik.errors.photo ? "border-rose-500" : ""

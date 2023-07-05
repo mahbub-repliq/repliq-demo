@@ -49,21 +49,13 @@ function Products() {
           <>
             <div className={`flex justify-center md:justify-end`}></div>
             <div className="my-5 md:flex justify-between items-end">
-              {/* <LargeButton> */}
               <button
                 className="w-full md:hidden px-3 md:px-5 py-1 md:py-2 text-md md:font-semibold uppercase bg-primary hover:bg-secondary rounded text-base-100 transition-all ease-in-out duration-500"
                 onClick={() => setOpendrawer(true)}
               >
                 Add New Product
               </button>
-              {/* </LargeButton> */}
               <div className="">
-                {/* <label
-                  htmlFor="countries"
-                  class="block mb-2 font-medium text-neutral"
-                >
-                  Select an option
-                </label> */}
                 <select
                   value={selectedValue}
                   onChange={(e) => setSelectedValue(e.target.value)}
@@ -87,7 +79,6 @@ function Products() {
                 </LargeButton>
               </div>
             </div>
-
             <div className="hidden lg:block">
               <table className=" border-collapse border rounded-md overflow-hidden border-accent w-full">
                 <thead className="">
