@@ -89,10 +89,10 @@ function Products() {
             </div>
 
             <div className="hidden lg:block">
-              <table className=" border-collapse border rounded border-accent w-full">
+              <table className=" border-collapse border rounded-md overflow-hidden border-accent w-full">
                 <thead className="">
                   <tr className="bg-accent rounded">
-                    <th className="hidden md:block px-2 py-5 text-left text-neutral">
+                    <th className="hidden md:block pl-4 py-5 text-left text-neutral">
                       Product
                     </th>
                     <th className="border-y border-accent px-2 py-5 text-left text-neutral">
@@ -115,9 +115,9 @@ function Products() {
                       key={index}
                       className="border border-accent bg-base-100"
                     >
-                      <td className="hidden md:block px-2 py-5">
+                      <td className="hidden md:block pl-4 py-5">
                         {" "}
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-start items-center">
                           <img
                             className="w-24 h-24 rounded "
                             src={item.image}
