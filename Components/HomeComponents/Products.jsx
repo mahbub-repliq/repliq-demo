@@ -43,23 +43,23 @@ function Products() {
           <ul className="hidden md:flex gap-4 text-sm md:text-lg">
             <li
               onClick={() => setActiveTab(0)}
-              className={`pb-4 border-b-2 ${
+              className={`pb-4 border-b-2 lg:mr-5 ${
                 activeTab == 0 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
-              Smartphones & Tablets
+              Smartphones <span className="hidden lg:inline">& Tablets</span>
             </li>
             <li
               onClick={() => setActiveTab(1)}
-              className={`pb-4 border-b-2 ${
+              className={`pb-4 border-b-2 lg:mr-5 ${
                 activeTab == 1 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
-              Computers & Laptops
+              Computers <span className="hidden lg:inline">& Laptops</span>
             </li>
             <li
               onClick={() => setActiveTab(2)}
-              className={`pb-4 border-b-2 ${
+              className={`pb-4 border-b-2 lg:mr-5 ${
                 activeTab == 2 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
@@ -67,15 +67,15 @@ function Products() {
             </li>
             <li
               onClick={() => setActiveTab(3)}
-              className={`pb-4 border-b-2 ${
+              className={`pb-4 border-b-2 lg:mr-5 ${
                 activeTab == 3 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >
-              Video Games
+               <span className="hidden lg:inline">Video</span> Games
             </li>
             <li
               onClick={() => setActiveTab(4)}
-              className={`pb-4 border-b-2 ${
+              className={`pb-4 border-b-2 lg:mr-5 ${
                 activeTab == 4 ? "border-primary" : "border-transparent"
               } hover:border-primary cursor-pointer`}
             >

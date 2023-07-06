@@ -1,0 +1,82 @@
+[
+    {
+      "_id": "63a92a4ebb5a39c814b0472a",
+      "name": "Professional Handheld HD DV SLR Digital Camcorder",
+      "category": "camera",
+      "image": "https://i.ibb.co/0sbcGXN/8.webp",
+      "status": "new arrival",
+      "price": 399999
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b04724",
+      "name": "14 inch Win 11 brand new notebook",
+      "category": "laptop",
+      "image": "https://i.ibb.co/kHDfndn/10.webp",
+      "status": "summer sale",
+      "price": 84400
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b0472e",
+      "name": "Plastic Magnetic Accessories Mobile Phone Holder",
+      "category": "accessories",
+      "image": "https://i.ibb.co/3cCPKvH/4.webp",
+      "status": "sold",
+      "price": 399999
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b04727",
+      "name": "XIAO M12 ULTRA PHONE",
+      "category": "smartphone",
+      "image": "https://i.ibb.co/vY3JDdg/12.webp",
+      "status": "out of stock",
+      "price": 86200
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b0472c",
+      "name": "Sony Alpha A7r2 a7s2 46MP 16.2MP 4K",
+      "category": "camera",
+      "image": "https://i.ibb.co/NWC9GD8/6.webp",
+      "status": "upcoming",
+      "price": 399999
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b04723",
+      "name": "14 inch Win 11 brand new notebook",
+      "category": "laptop",
+      "image": "https://i.ibb.co/P5Y0fWy/9.webp",
+      "status": "new arrival",
+      "price": 41800
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b04731",
+      "name": "KC Listed 5V 1A KR charger",
+      "category": "accessories",
+      "image": "https://i.ibb.co/QNQbNmD/1.webp",
+      "status": "summer sale",
+      "price": 399999
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b04722",
+      "name": "AMD Ryzen 5 5600X Gaming PC",
+      "category": "laptop",
+      "image": "https://live.staticflickr.com/65535/52522584794_4a9898a992_o.jpg",
+      "status": "sold",
+      "price": 128200
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b04725",
+      "name": "Gaming PC 10th Gen Core i5-10400f",
+      "category": "laptop",
+      "image": "https://live.staticflickr.com/65535/52522584684_9fa14a3332_o.jpg",
+      "status": "out of stock",
+      "price": 56700
+    },
+    {
+      "_id": "63a92a4ebb5a39c814b0472b",
+      "name": "Digital Zoom Photo Camera ",
+      "category": "camera",
+      "image": "https://i.ibb.co/k9sYXzZ/7.webp",
+      "status": "upcoming",
+      "price": 399999
+    }
+  ]

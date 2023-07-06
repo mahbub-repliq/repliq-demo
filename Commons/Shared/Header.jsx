@@ -40,6 +40,10 @@ function Header() {
       item: "dashboard",
       path: "/dashboard",
     },
+    {
+      item: "assesment",
+      path: "/assesment",
+    },
   ];
   return (
     <div>
@@ -78,10 +82,10 @@ function Header() {
           </div>
         </div>
         <div className="bg-[#15161D] py-3 px-5 md:px-10 md:flex flex-row justify-between items-center">
-          <div className="basis-1/5 flex justify-between lg:justify-start pb-5 lg:pb-0">
+          <div className="basis-1/5 flex justify-between lg:justify-start pb-5 md:pb-0">
             <Link
               href="/"
-              className="text-4xl md:text-6xl font-bold text-base-100"
+              className="text-4xl lg:text-6xl font-bold text-base-100"
             >
               Electro
             </Link>
@@ -109,7 +113,7 @@ function Header() {
                   key={index}
                   onClick={() => setOpenMenu(!openMenu)}
                   href={`${menu.path}`}
-                  className="block md:inline-block mx-5 text-lg capitalize"
+                  className="block md:inline-block mx-5 md:mx-3 lg:mx-5 text-lg capitalize"
                 >
                   {menu.item}
                 </Link>
@@ -128,7 +132,7 @@ function Header() {
               <div className="flex justify-center">
                 <FaRegHeart className="mx-auto text-base-100" size={30} />
               </div>
-              <p>Your Wishlist</p>
+              <p className="text-center">Wishlist</p>
               <div className="bg-primary flex justify-center items-center w-6 h-6 rounded-full text-white text-center absolute top-[-10px] right-5">
                 <span className="text-sm">10</span>
               </div>
@@ -140,7 +144,7 @@ function Header() {
                   size={30}
                 />
               </div>
-              <p>Your Cart</p>
+              <p className="text-center">Cart</p>
               <div className="bg-primary flex justify-center items-center w-6 h-6 rounded-full text-white text-center absolute top-[-10px] right-2">
                 <span className="text-sm">10</span>
               </div>

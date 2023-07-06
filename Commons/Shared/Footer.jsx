@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className="pt-4 md:pt-8 lg:pt-12 bg-accent text-slate-900">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-5 px-4 md:px-8 lg:px-12 border-b pb-5 md:pb-8 lg:pb-12">
-        <div className="flex justify-center text-center md:text-start">
+        <div className="flex justify-center md:justify-start text-center md:text-start">
           <div className="">
             <h1 className="text-4xl md:text-6xl font-bold mb-3">
               Electro
@@ -40,7 +40,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center text-center md:text-start">
+        <div className="flex justify-center md:justify-start text-center md:text-start">
           <div className="">
             <h2 className="text-xl text-neutral">Important Links</h2>
             <ul>
@@ -51,7 +51,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex justify-center text-center md:text-start">
+        <div className="flex justify-center md:justify-start text-center md:text-start">
           <div className="">
             <h2 className="text-xl text-neutral">Customer Care</h2>
             <ul>
@@ -62,7 +62,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex justify-center text-center md:text-start">
+        <div className="flex justify-center md:justify-start text-center md:text-start">
           <div className="">
             <h2 className="text-xl text-neutral">Customer Care</h2>
             <ul>
