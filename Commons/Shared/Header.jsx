@@ -21,7 +21,9 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import ButtonSmall from "../ButtonSmall";
 
 function Header() {
-  const [openMenu, setOpenMenu] = useState(FaClosedCaptioning);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [activeItem, setActiveItem] = useState('/');
+
 
   const menuItems = [
     {
@@ -45,6 +47,8 @@ function Header() {
       path: "/assesment",
     },
   ];
+
+
   return (
     <div>
       <div className=" z-50 relative">
@@ -111,9 +115,12 @@ function Header() {
               {menuItems.map((menu, index) => (
                 <Link
                   key={index}
-                  onClick={() => setOpenMenu(!openMenu)}
+                  onClick={() => {
+                    setOpenMenu(!openMenu);
+                    setActiveItem(menu.path)
+                  }}
                   href={`${menu.path}`}
-                  className="block md:inline-block mx-5 md:mx-3 lg:mx-5 text-lg capitalize"
+                  className={`block md:inline-block mx-5 md:mx-0.5 lg:mx-1 text-lg capitalize rounded px-2 hover:bg-accent hover:text-neutral hover:transition-all ease-in-out duration-300 ${activeItem === menu.path ? ' bg-base-100 text-neutral' : '' }`}
                 >
                   {menu.item}
                 </Link>

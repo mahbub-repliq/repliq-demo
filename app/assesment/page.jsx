@@ -7,7 +7,7 @@ import { BiEdit, BiTrash } from "react-icons/bi";
 function Assesment() {
   const [activeTab, setActiveTab] = useState("all products");
   const [selectedValue, setSelectedValue] = useState("");
-  const [statusValue, setStatusValue] = useState(selectedValue);
+  const [statusValue, setStatusValue] = useState("all products");
   const [filterProduct, setFilterProduct] = useState([]);
   const [queryProduct, setqueryProduct] = useState([]);
 
@@ -43,16 +43,6 @@ function Assesment() {
     }
   }, [data, selectedValue]);
 
-  console.log(
-    "Got fake products.......",
-    activeTab,
-    findStatus,
-    data,
-    filterProduct,
-    selectedValue,
-    queryProduct
-  );
-
   return (
     <div className="pb-4 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12">
       <div>
@@ -75,6 +65,7 @@ function Assesment() {
             {status.map((item, index) => (
               <>
                 <li
+                key={index}
                   onClick={() => setActiveTab(item)}
                   className={`pb-4 border-b-2 lg:mr-5 capitalize 
                   ${activeTab == item ? "border-primary" : "border-transparent"}
@@ -91,17 +82,17 @@ function Assesment() {
           <select
             value={selectedValue}
             onChange={(e) => setSelectedValue(e.target.value)}
+            onClick={() => setqueryProduct(data)}
             className="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-full md:w-72 px-3 py-2 md:py-2.5 mt-4 md:mt-0"
           >
             <option
-              defaultValue={"Choose by status"}
-              onClick={() => setqueryProduct(data)}
+              defaultValue={"All Products"}
             >
-              Choose by status
+              All Products
             </option>
             {status.map((item, index) => (
               <>
-                <option className="capitalize" value={item}>
+                <option key={index} className="capitalize" value={item}>
                   {" "}
                   {item}{" "}
                 </option>
@@ -112,74 +103,58 @@ function Assesment() {
       </div>
 
       <div className="hidden lg:block">
-        <table className=" border-collapse border rounded-md overflow-hidden border-accent w-full">
+        <table className="border border-gray-200 w-full rounded-md">
           <thead className="">
-            <tr className="bg-accent rounded">
+            <tr className="bg-accent">
               <th className="hidden md:block pl-4 py-5 text-left text-neutral">
                 Product
               </th>
-              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
-                Name
-              </th>
-              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
-                Price
-              </th>
-              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
-                Category
-              </th>
-              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
-                Status
-              </th>
-              <th className="border-y border-accent px-2 py-5 text-left text-neutral">
-                Action
-              </th>
+              <th className="px-2 py-5 text-left text-neutral">Name</th>
+              <th className="px-2 py-5 text-left text-neutral">Price</th>
+              <th className="px-2 py-5 text-left text-neutral">Category</th>
+              <th className="px-2 py-5 text-left text-neutral">Status</th>
+              <th className="px-2 py-5 text-left text-neutral">Action</th>
             </tr>
           </thead>
           <tbody>
             {filterProduct?.map((item, index) => (
-              <tr key={index} className="border border-accent bg-base-100">
+              <tr key={index} className="divide-y bg-base-100 border-t border-gray-200">
                 <td className="hidden md:block pl-4 py-5">
                   {" "}
-                  <div className="flex justify-start items-center">
-                    <img
-                      className="w-24 h-24 rounded "
-                      src={item.image}
-                      alt=""
-                    />
-                  </div>{" "}
+                  <img className="w-24 h-24 rounded " src={item.image} alt="" />
                 </td>
-                <td className="border-y border-accent px-2 py-5">
+                <td className="px-2 py-5 ">
                   {item.name}
                 </td>
-                <td className="border-y border-accent px-2 py-5">
+                <td className="px-2 py-5 ">
                   {item.price}
                 </td>
-                <td className="group border-y border-accent px-2 py-5">
+                <td className="px-2 py-5 ">
                   {" "}
                   {item.category}{" "}
                 </td>
-                <td className="group border-y border-accent px-2 py-5">
+                <td className="px-2 py-5 ">
                   <select
                     value={activeTab}
                     onChange={(e) => setStatusValue(e.target.value)}
                     className="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-32 px-3 py-2 md:py-2.5 mt-4 md:mt-0"
                   >
                     <option
-                      defaultValue={activeTab}
+                      defaultValue={activeTab.toUpperCase()}
                       onClick={() => setqueryProduct(data)}
                     >
                       {activeTab}
                     </option>
                     {status.map((item, index) => (
                       <>
-                        <option className="capitalize" value={statusValue}>
+                        <option key={index} className="" value={statusValue}>
                           {item}
                         </option>
                       </>
                     ))}
                   </select>
                 </td>
-                <td className="border-y border-accent px-2 py-5">
+                <td className=" px-2 py-5 ">
                   <div className="flex justify-center md:justify-start items-center gap-10 md:gap-3">
                     <button className="border border-primary hover:bg-primary text-primary hover:text-base-100 px-3 py-2 flex justify-center items-center gap-2 rounded-md transition-all ease-in-out duration-500 uppercase text-xs">
                       <BiEdit className="" size={20} />
@@ -228,19 +203,19 @@ function Assesment() {
             </div>
             <div className="px-5 pb-5">
               <select
-                value={selectedValue}
+                value={statusValue}
                 onChange={(e) => setStatusValue(e.target.value)}
-                className="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:ring-primary focus:border-primary block w-full px-3 py-2 md:py-2.5"
+                className="bg-base-100 border border-gray-300 text-neutral text-sm rounded-md focus:border-primary block w-full px-3 py-2 md:py-2.5"
               >
                 <option
                   defaultValue={selectedValue}
-                  onClick={() => setqueryProduct(data)}
+                  // onClick={() => setqueryProduct(data)}
                 >
-                  {selectedValue}
+                  {selectedValue ? selectedValue : "all status"}
                 </option>
                 {status.map((item, index) => (
                   <>
-                    <option className="capitalize" value={statusValue}>
+                    <option key={index} className="" value={""}>
                       {item}
                     </option>
                   </>
